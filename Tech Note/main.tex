@@ -307,7 +307,7 @@ The absorption coefficient of the vegetation samples were determined from the fr
 
 Pressure loss measurements were obtained in a wind tunnel test section with a cross-sectional area of 0.5 m x 0.5 m and a length of 2 \si{m}. Differential pressure was measured in two sections: 1) upstream using a Rosemont 485 Annubar Primary Element and 2) downstream between two pressure taps placed approximately 5 cm away from the vegetation sample  (Fig. \ref{fig:Windtun}). The differential pressure was specifically measured using two MKS Baratron Type 220D Pressure Transducer with a range of 0 to 1 torr (133 Pa). The air flow was provided by a 0.91 \si{m} axial fan controlled by a variable frequency drive and monitored using the Annubar, which operates similar to pitot-static tube rake. Air density was calculated from the tunnel's internal temperature obtain from K-type thermocouple while also accounting for the pressure and humidity surrounding the wind tunnel. Each sample configuration was subjected to nine different fan speeds ranging from 0 to 88\% of the full scale fan speed. The fan speed was not run at full scale due to the risk of exceeding the pressure tansducer's pressure limitations. During a wind tunnel test data was sampled at 90 Hz for a 30-second period while maintaining at a constant fan speed.\\
 
-\begin{figure} [h]
+\begin{figure} [!ht]
 	\centering 	\includegraphics[width=1.0\linewidth]{Picture6.jpg}
 	\caption{Schematic diagram of the wind-tunnel experimental setup (not to scale)}
 	\label{fig:Windtun}
@@ -322,7 +322,7 @@ Pressure loss measurements were obtained in a wind tunnel test section with a cr
 
 The volume of vegetative solids was measured after a cut was made to the cubic vegetation sample. The remaining vegetative substance was separated into two groups of branches and leaves. Each group was packaged using a cloth mesh bag and thin wire. The wire volume and mass of the mesh bag and wire was measured before any displacement testing was conducted to determine only the vegetation material. Before submerging the packaged material, the dry weight of the sample was measured using a Mettler Toledo Jaguar load cell. After determining the dry weight, the packaged material was completely submerged in a bucket with a spout located approximately 3.8 \si{cm} from the top of the bucket. Before submerging the vegetation in water, the bucket was filled entirely with water, then allowed to drain at the lip of the spout to eliminate any additional displaced waterduring the test. Once the packaged vegetation was submerged, the displaced water was fed through the spout and into a glass beaker (Fig. \ref{fig:wdt}). Testing concluded once the flow through tubing stopped or exhibited infrequent drips. The collected beaker water was then poured into a 1000 ml graduated cylinder to determine the volume of solid vegetation.\\
 
-\begin{figure} [h]
+\begin{figure} [!ht]
 	\centering 	\includegraphics[width=1.0\linewidth]{Picture7.jpg}
 	\caption{Procedure of the water displacement test}
 	\label{fig:wdt}
@@ -360,7 +360,7 @@ Table \ref{tab:SumTable} shows the average drag coefficient, and its respective 
 	\begin{tabular}{cccccccccccc}
 	%\caption{Summary Table}	
 			\hline
-\textbf{Sample}	&	\textbf{Cut}	& 	\textbf{Position}	&	\textbf{C\textsubscript{d}}	&	\textbf{C\textsubscript{d} Uncertainty}	&	\\	\hline
+\textbf{Sample}	&	\textbf{Cut}	& 	\textbf{Position}	&	$C_{\rm D}$	&	\textbf{C\textsubscript{d} Uncertainty}	&	\\	\hline
 		&		&			&				&						&	\\	
 Bakers Blue Spruce	&	0	& 	A/C	&	3.35	&	0.02	&	\\	
 	&		& 	B/D	&	3.10	&	0.01	&	\\	
@@ -408,24 +408,24 @@ Robin Red Holly	&	0	&	A/C	&	2.79	&	0.017	&	\\
 
 \end{table}
 
-\indent Figure \ref{fig:DPvU(Overall)} shows the differential pressure measurements taken across the vegetation plotted against the free stream velocity. It can be observed that the differential pressure readings across a given velocity range are higher for vegetation configurations with higher free area fractions. By evaluating Eq.~\ref{eq:Pressure}, the relationship between the dynamic pressure and the ratio between differential pressure measured across the vegetation and the product of the absorption coefficient and length can be seen in Fig. \ref{fig:DPoveraf(Overall)}. Despite exhibiting different geometric characteristics, Fig. \ref{fig:DPoveraf(Overall)} demonstrates that by incorporating the absorption coefficient and length, the pressure ratio moderately collapses suggesting a fairly consistent drag coefficient for the variety of vegetation canopies.
+Figure~\ref{fig:DPvU(Overall)} shows the differential pressure measurements taken across the vegetation plotted against the free stream velocity. It can be observed that the differential pressure readings across a given velocity range are higher for vegetation configurations with higher free area fractions. By evaluating Eq.~(\ref{eq:Pressure}), the relationship between the dynamic pressure and the ratio between differential pressure measured across the vegetation and the product of the absorption coefficient and length can be seen in Fig. \ref{fig:DPoveraf(Overall)}. Despite exhibiting different geometric characteristics, Fig. \ref{fig:DPoveraf(Overall)} demonstrates that by incorporating the absorption coefficient and length, the pressure ratio moderately collapses suggesting a fairly consistent drag coefficient for the variety of vegetation canopies.
 
 
 \begin{figure} [h]
-	\centering 	\includegraphics[width=0.8\linewidth]{DPvU(Overall_Ave).pdf}
+	\includegraphics[width=\linewidth]{DPvU(Overall_Ave).pdf}
 	\caption{Differential pressure measured across different vegetation samples subjected to various free stream velocities.}
 	\label{fig:DPvU(Overall)}
 \end{figure}
 
 \begin{figure}[h]
-	\centering 	\includegraphics[width=0.9\linewidth]{DPoveraf(Overall_Ave).pdf}
-	\caption{Differential pressure across different vegetation samples over their respective (\textkappa L) vs. dynamic pressureof.}
+	\includegraphics[width=\linewidth]{DPoveraf(Overall_Ave).pdf}
+	\caption{Differential pressure across different vegetation samples over their respective ($\kappa L$) vs. dynamic pressureof.}
 	\label{fig:DPoveraf(Overall)}
 \end{figure}
 
-\subsection{Relationship between the absorption coefficient (\textkappa) and solid fraction (\textbeta) }
+\subsection{Relationship between the absorption coefficient $\kappa$ and solid fraction $\beta$ }
 
-Figure \ref{fig:betavkappa} displays each samples' absorption coefficient plotted against their corresponding solid fractions. The markers presented in Figure \ref{fig:betavkappa} indicate the actual measured values while the dotted lines are a linear regression fit of the measured data. It can be observed that the absorption coefficient declines with the cut indicating that the removal of solid material from the vegetation after a cut increases the free area fraction, thus decreasing the absorption coefficient. Furthermore, Fig. \ref{fig:betavkappa} also shows a discrepancy between the sample positions of the same cut. The difference in the absorption coefficients suggests that the area distribution within the canopy structure is inhomogeneously distributed. In other words, the original assumption that the vegetation canopy has a complex porous structure that is unevenly distributed and asymmetric is further supported by the discrepancy in the positioning data.
+Figure \ref{fig:betavkappa} displays each samples' absorption coefficient plotted against their corresponding solid fractions. The markers presented in Figure \ref{fig:betavkappa} indicate the actual measured values while the dotted lines are a linear regression fit of the measured data. It can be observed that the absorption coefficient declines with the cut indicating that the removal of solid material from the vegetation after a cut increases the free area fraction, thus decreasing the absorption coefficient. Furthermore, Fig.~\ref{fig:betavkappa} also shows a discrepancy between the sample positions of the same cut. The difference in the absorption coefficients suggests that the area distribution within the canopy structure is inhomogeneously distributed. In other words, the original assumption that the vegetation canopy has a complex porous structure that is unevenly distributed and asymmetric is further supported by the discrepancy in the positioning data.
 
 \begin{figure}[h]
 	\centering 	\includegraphics[width=0.8\linewidth]{Solid_FractionvKappa(Ave).pdf}
