@@ -21,6 +21,8 @@
 \usepackage{textgreek}
 \usepackage{textcomp}
 \usepackage[hang,flushmargin,bottom]{footmisc} % footnote format
+\usepackage{rotating}
+\usepackage{tikz}
 \usepackage{siunitx} % Formats the units and values
 \usepackage{titlesec}
 \usepackage{tikz}
@@ -195,7 +197,8 @@ Natl. Inst. Stand. Technol. Tech. Note \pubnumber, \pageref{LastPage} pages (\mo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{roman}
 \section*{Abstract}
-\normalsize This report documents a series of experiments carried out on a variety of vegetation canopy to determine their resistance to airflow. The objective of each experiment was a follows: Experiment 1) determine the vegetations' projected area using standard photography equipment and image analysis software, Experiment 2) measure the pressure loss across vegetation canopy while exposed to steady wind speeds in an open circuit wind tunnel, and Experiment 3) quantify the total volume of the vegetation canopy using a water displacement technique. The results obtained from these experiments were combined to calculate the drag coefficient of the vegetation canopy and provided further insight into the relationship between the vegetations' geometric properties and resistance to airflow. Furthermore, specific parameters determined from the experiments were incorporated into well-established hydraulic resistance models of configurations with similar geometry (i.e., tube banks) to validate the calculated drag coefficients of the vegetation canopy. \\
+\normalsize This report documents a series of experiments carried out on a variety of vegetation canopy to determine their resistance to airflow. The objective of each experiment was a follows: Experiment 1) determine the vegetations' projected area using standard photography equipment and image analysis software, Experiment 2) measure the pressure loss across vegetation canopy while exposed to steady wind speeds in an open circuit wind tunnel, and Experiment 3) quantify the total volume of the vegetation canopy using a water displacement technique. The results obtained from these experiments were combined to calculate the drag coefficient of the vegetation canopy and provided further insight into the relationship between the vegetations' geometric properties and resistance to airflow. Furthermore, specific parameters determined from the experiments were incorporated into well-established hydraulic resistance models of configurations with similar geometry (i.e., tube banks) to validate the calculated drag coefficients of the vegetation canopy.
+
 \section*{Key words}
 \normalsize Vegetation Canopy; Drag Coefficient; Wind Tunnel; Tube Banks.\\
 \pagebreak
@@ -225,7 +228,7 @@ Measurements of this type have been performed by other researchers~\cite{Cao2012
 \section{Model Development}
 \label{ssec:headingscap}
 
-The objective of the experiments described in this report is to measure a drag coefficient appropriate for an empirical model of wind resistance by ``bulk'' vegetation. This model is to be used within a CFD model where vegetation is taken as a  collection of subgrid-scale solid particles whose mass, size, and shape are characterized by a handful of parameters that can be determined with field measurements. The term ``bulk'' vegetation stresses the fact that the objective is not to consider the drag exerted by a single tree or shrub, but rather a characteristic volume filled with a random collection of leaves, pine needles, etc., as shown in the simple schematic of Fig.~\ref{fig:Canopymod}. This volume can be thought of as a grid cell in the CFD model that has an average flow speed, $U$, and gas density, $\rho$.
+The objective of the experiments described in this report is to measure a drag coefficient appropriate for an empirical model of wind resistance by ``bulk'' vegetation. This model is to be used within a CFD model where vegetation is taken as a collection of subgrid-scale solid particles whose mass, size, and shape are characterized by a handful of parameters that can be determined with field measurements. The term ``bulk'' vegetation stresses the fact that the objective is not to consider the drag exerted by a single tree or shrub, but rather a characteristic volume filled with a random collection of leaves, pine needles, etc., as shown in the simple schematic of Fig.~\ref{fig:Canopymod}. This volume can be thought of as a grid cell in the CFD model that has an average flow speed, $U$, and gas density, $\rho$.
 \begin{figure}[!ht]
 	\centering 	\includegraphics[width=1.0\linewidth]{Picture1.jpg}
 	\caption{Vegetation translation to multi-component model}
@@ -243,16 +246,16 @@ Equation~(\ref{eq:DragForce}) can be recast in an equivalent form that is more u
 \label{eq:DragForcea}
 F_{\mathrm{D}}  = \frac{\rho}{2} C_{\mathrm{D}} \, C_{\mathrm{s}} \, \beta \, \sigma \, U^2
 \end{equation}
-where $C_{\mathrm{s}}$ is a characteristic shape factor defined in this case as the ratio of the projected area to surface area of each vegetative component, $\beta$ is the ratio of the volume occupied by vegetation to the control volume, $V$, and $\sigma$ is the surface area to volume ratio of each vegetative component. Some of the terms are difficult to measure, such as the shape factor and surface to volume ratio. However, these terms may be combined to form a parameter that resembles an absorption coefficient:
+where $C_{\mathrm{s}}$ is a characteristic shape factor defined in this case as the ratio of the projected area to surface area of each vegetative component, $\beta$ is the ratio of the volume occupied by vegetation to the control volume, $V$, and $\sigma$ is the surface area to volume ratio of each vegetative component. Some of the terms are difficult to measure, such as the shape factor and surface to volume ratio. However, these terms may be combined to form a parameter that resembles an absorption coefficient ($\kappa$):
 \begin{equation}
-\label{eq:WhiteFraction} 
+\label{eq:Kappa} 
 \kappa = C_{\mathrm{s}} \, \beta \, \sigma 
 \end{equation}
-that can be determined by measuring the projected area of light passing a distance $L$ through the vegetation. The relative area of light, or ``white fraction'', is defined by the relation:
+that can be determined by measuring the projected area of light passing a distance $L$ through the vegetation. The relative area of light, or ``free area fraction'', is defined by the relation:
 \begin{equation}\label{eq:WhiteFraction}
 W = {\rm e}^{-\kappa L}
 \end{equation}
-In the experiments, the cross section of a small wind tunnel is filled with various amounts of various types of vegetation and the drag coefficient is determined for the following simplified model:
+In the experiments, the cross-section of a small wind tunnel is filled with various amounts and types of vegetation to determine the drag coefficient for the following simplified model:
 \begin{equation}\label{eq:Pressure}
 F_{\mathrm{D}} \equiv \frac{\Delta P}{L}  = \frac{\rho}{2} \, C_{\mathrm{D}} \, \kappa \, U^2
 \end{equation}
@@ -264,71 +267,68 @@ F_{\mathrm{D}} \equiv \frac{\Delta P}{L}  = \frac{\rho}{2} \, C_{\mathrm{D}} \, 
 \subsection{Vegetation Preparation and Investigation Procedure}
 \label{ssec:headingscap}
 
-The vegetation chosen for this work was a Bakers Blue Spruce, an Evergreen Distylium, a Gold Rider Leyland Cypress, a Kimberley Queen Fern, a Blue Shag Eastern White Pine, and a Robin Red Holly. Each vegetation sample was chosen for this study based on their local availability. Leaf shapes of the vegetation samples included needle, elliptic, scale, and ovate shapes.
+The vegetation chosen for this work was a Bakers Blue Spruce (Picea pungens glauca 'Bakeri'), an Evergreen Distylium (Distylium 'PIIDIST-I' Plant Patent \#24410), a Gold Rider Leyland Cypress (Cupressocyparis leylandii 'Gold Rider'), a Kimberly Queen Fern (Nephrolepis obliterata 'Kimberly Queen'), a Blue Shag Eastern White Pine (Pinus strobus 'Blue Shag'), and a Robin Red Holly (Ilex x 'Conin'). Each sample was chosen based on its local availability. Leaf shapes were varied, including needle, elliptic, scale, and ovate.
 
-To mimic a segment of vegetation canopy similarly investigated in a numerical simulation, samples were cut  into 0.5 m x 0.5 m x 0.5 m cubes using a cubic guiding frame then to a thin steel plate (Fig. \ref{fig:Sampleprep}). The 0.5 m x 0.5 m cross-section of the segmented vegetation canopy fully occupied the cross-section of the wind tunnel forcing the flow to move through the vegetation as opposed to around it. The center of each cubic vegetation sample's side was marked on the base plate to better the perpendicular alignment of the vegetation to the flow when placed in the wind tunnel. To easily distinguish the front, back, left, and right side of the cube-shaped vegetation, each side was designated a name of position A (PA), position B (PB), position C (PC), or position D (PD) (Fig. \ref{fig:Vegpos}). After its initial cut, image analysis, wind tunnel measurements, and water displacement testing were conducted in subsequent order. In some cases, additional cuts were made to certain samples at the conclusion of the experimental procedure (Fig. \ref{fig:flowchart}). The decision to make additional cuts made to the vegetation samples mainly depended on the lively hood of the particular sample after an iteration in the experimental procedure. In the case of the Bakers Blue Spruce, Gold Rider Leyland Cypress, and Robin Red Holly, four iterative cuts were made with the final cut being the removal of all leaves from the vegetation.
+The plant samples were cut into 0.5~\si{m} x 0.5~\si{m} x 0.5~\si{m} cubes using a simple guiding frame  (Fig.~\ref{fig:Sampleprep}). The samples completed filled the cross-section of the wind tunnel forcing the flow to move through the vegetation as opposed to around it. To easily distinguish the front, back, left, and right side of the cube-shaped vegetation, each side was designated position A (PA), position B (PB), position C (PC), or position D (PD) (Fig.~\ref{fig:Vegpos}). After its initial cut, image analysis, wind tunnel measurements, and water displacement testing were conducted in subsequent order. In some cases, additional cuts were made to certain samples at the conclusion of the experimental procedure (Fig.~\ref{fig:flowchart}). The decision to make additional cuts made to the vegetation samples mainly depended on the health of the plant after an iteration in the experimental procedure. In the case of the Bakers Blue Spruce, Gold Rider Leyland Cypress, and Robin Red Holly, four iterative cuts were made with the final cut being the removal of all leaves from the vegetation.
 
-\begin{figure} [h]
-	\centering 	\includegraphics[width=1.0\linewidth]{Picture2.jpg}
+\begin{figure} [!]
+	\centering 	
+	\includegraphics[height=\textheight,keepaspectratio]{Picture2.jpg}
 	\caption{Cutting procedure of vegetation samples}
 	\label{fig:Sampleprep}
 \end{figure}
-
 \begin{figure} [!]
 	\centering 	\includegraphics[width=1.0\linewidth]{Picture3.jpg}
 	\caption{Prepared vegetation sample's designated orientation}
 	\label{fig:Vegpos}
 \end{figure}
 
-\begin{figure} [!]
-	\centering 	\includegraphics[width=1.0\linewidth]{Picture4.jpg}
-	\caption{Flowchart of experimental procedures and their respective outcomes}
-	\label{fig:flowchart}
-\end{figure}
-
-
-
 \subsection{Image Analysis to Determine the Absorption Coefficient }
 \label{ssec:headingscap}
 
-The absorption coefficient of the vegetation samples were determined from the free area fraction ($W$) of the projected area of the sample. After segmenting the vegetation, the sample was placed on a table located between a large white backdrop and a 0.5 m x 0.5 m cardboard frame (Fig. \ref{fig:ImgAnaly}). The cardboard frame dimensions were the same as cross-section dimensions within the wind tunnel, providing an accurate representation of the vegetation's projected area when placed within the tunnel. For each sample cut, an image of each cubic sample's sides was captured. All images were captured using a Nikon D5600 camera placed on a tripod located approximately 3.6 \si{m} away from the frontal plane of the vegetation sample. In order to identify smaller areas of white space, the white backdrop was illuminated using a collection of incandescent and LED lights.\\
+The absorption coefficient of the vegetation samples were determined from the free area fraction ($W$) of the projected area of the sample. To determine this, the sample was placed on a table located between a large white backdrop and a 0.5~m by 0.5~m cardboard frame (Fig.~\ref{fig:ImgAnaly}), the same dimensions as the wind tunnel, providing an accurate representation of the vegetation's projected area when placed within the tunnel. For each sample cut, the projected area was photographed. All images were captured using a Nikon D5600 camera placed on a tripod located approximately 3.6~\si{m} away from the frontal plane of the vegetation sample. In order to identify smaller areas of white space, the white backdrop was illuminated using a collection of incandescent and LED lights.
 
-\begin{figure} [h]
+\begin{figure} [!h]
 	\centering 	\includegraphics[width=1.0\linewidth]{Picture5.jpg}
 	\caption{Setup for photographing vegetation samples (left) and the post-processing procedure for analyzing images (right)}
 	\label{fig:ImgAnaly}
 \end{figure}
 
-\indent After photographing the projected area of vegetation, the captured images were processed using MATLAB's Image Processing Toolbox. Imported images were first cropped within the cardboard frame to eliminate nonvegetative substances and to exclusively evaluate the projected vegetation area. The obtained colored image was converted into a grey scale then binary (black and white) image using a pre-set threshold level. Once converted into a binary image, a pixel count was conducted to determine the free area fraction of the vegetation. After obtaining the free area fractions for each position of the vegetation sample, the average free area fraction was calculated by averaging the parallel sides of the cubic vegetation.\\
-\indent An uncertainty analysis was also conducted on the imaging process. Before using segmented vegetation samples, objects of known projected areas were photographed using the same imaging setup. It was found that with each object, the calculated free area fraction varied from the true value by 1\%. Therefore, the error of the free area fraction values was assumed to be 1\%. The uncertainty of each determined free area fraction also accounted for the averaged value using propagation of error.
+The images were processed using MATLAB's Image Processing Toolbox. Imported images were first cropped within the cardboard frame to eliminate non-vegetative substances and to exclusively evaluate the projected vegetation area. The colored image was converted into a grey scale and then a binary (black and white) image using a pre-set threshold level. Once converted into a binary image, a pixel count was conducted to determine the free area fraction of the vegetation. After obtaining the free area fractions for each position of the vegetation sample, the average free area fraction was calculated by averaging the parallel sides of the cubic vegetation.
+ 
+An uncertainty analysis was conducted by measuring objects of known projected areas using the same imaging process. It was found that with each object, the calculated free area fraction varied from the true value by 1~\%.
 
 \subsection{Wind Tunnel Experiments to Measure the Pressure Loss Across Vegetation}
 \label{ssec:headingscap}
 
-Pressure loss measurements were obtained in a wind tunnel test section with a cross-sectional area of 0.5 m x 0.5 m and a length of 2 \si{m}. Differential pressure was measured in two sections: 1) upstream using a Rosemont 485 Annubar Primary Element and 2) downstream between two pressure taps placed approximately 5 cm away from the vegetation sample  (Fig. \ref{fig:Windtun}). The differential pressure was specifically measured using two MKS Baratron Type 220D Pressure Transducer with a range of 0 to 1 torr (133 Pa). The air flow was provided by a 0.91 \si{m} axial fan controlled by a variable frequency drive and monitored using the Annubar, which operates similar to pitot-static tube rake. Air density was calculated from the tunnel's internal temperature obtain from K-type thermocouple while also accounting for the pressure and humidity surrounding the wind tunnel. Each sample configuration was subjected to nine different fan speeds ranging from 0 to 88\% of the full scale fan speed. The fan speed was not run at full scale due to the risk of exceeding the pressure tansducer's pressure limitations. During a wind tunnel test data was sampled at 90 Hz for a 30-second period while maintaining at a constant fan speed.\\
+Pressure loss measurements were obtained in a wind tunnel test section with a cross-sectional area of 0.5~\si{m} by 0.5~\si{m} and a length of 2~\si{m} Fig.~\ref{fig:WindtunnelPic}. A schematic diagram is shown in Fig.~\ref{fig:WindtunnelSch}. The volume flow through the tunnel was measured upstream of the vegetation using a Rosemont 485 Annubar. The pressure drop across the vegetation was measured using an MKS Baratron Type 220D pressure transducer with a range of 0 to 133~Pa (1~torr). The air flow was provided by a 0.91~m axial fan controlled by a variable frequency drive and monitored using the Annubar. Air density was calculated from the tunnel's internal temperature measured with a type-K thermocouple. Each sample configuration was subjected to nine different fan speeds ranging from 0 to 88~\% of the full scale fan speed. The fan speed was not run at full scale due to the risk of exceeding the pressure transducer's pressure limitations. Data was sampled at 90~\si{Hz} for a 30~\si{s} period while maintaining at a constant fan speed.
 
 \begin{figure} [!ht]
-	\centering 	\includegraphics[width=1.0\linewidth]{Picture6.jpg}
-	\caption{Schematic diagram of the wind-tunnel experimental setup (not to scale)}
-	\label{fig:Windtun}
+	\centering 	\includegraphics[width=1.0\linewidth]{Picture4.jpg}
+	\caption{Wind Tunnel Experiment Setup}
+	\label{fig:WindtunnelPic}
 \end{figure}
 
-\indent Once a set of measurements were taken at all nine fan speeds, the wind tunnel was shut off for a short amount of time (approx. 5 min), then proceeded by a repeated test. All wind tunnel tests were repeated three times for each vegetation configuration. The variances of the repeated tests' datasets for a given sample, cut, and position were compared using Hartley's F\textsubscript{Max} test. If it was found that the data sets were homogenous, then the data from the repeated tests were pooled together and averaged within the corresponding 30-second sampling time. \\
-\indent An uncertainty analysis was also conducted for the wind tunnel measurements using propagation of error. The uncertainty of the pressure readings accounted for the calibration error (1.2 \%) and the reported accuracy error (0.15\% of the reading $\pm$ 0.02\% of the reading per \textdegree C). The uncertainty of the air density was determined from the standard error of the sampling data. Since the velocity and subsequently calculated drag coefficient were functions of the pressure, density, and free area fraction measurements, their respective uncertainties were determined through propagation of error.
+\begin{sidewaysfigure} [!]
+	\centering 	\includegraphics[width=\textwidth,keepaspectratio]{Drawing1.pdf}
+	\caption{Schematic diagram of the wind-tunnel experimental setup}
+	\label{fig:WindtunnelSch}
+\end{sidewaysfigure}
+
+Once a set of measurements were taken at all fan speeds, the wind tunnel was shut off for approximately 5~\si{min}, and then the measurements were repeated. All measurements were repeated three times for each vegetation configuration. The replicate measurements were compared using Hartley's F\textsubscript{max} test. If it was found that the data sets were homogenous, then the measurements were averaged.
+
+The uncertainty of the pressure readings accounted for the measurement variability of the pooled data, the calibration error (1.2~\%), and the reported accuracy error (0.15~\% of the reading $\pm$ 0.02~\% of the reading per \textdegree C). Air density uncertainty was determined from the variability of the pooled data. Velocity uncertainty was established through the propagation of error incorporating the pressure and air density uncertainties. Similarly, the drag coefficient uncertainty was resolved through the propagation of error that accounted for the absorption factor uncertainty in addition to the pressure and air density uncertainty.  
 
 
-\subsection{Water Displacement Testing to Determine the Volume and Solid Fraction (\textbeta)}
+\subsection{Water Displacement Testing to Determine the Volume and Solid Fraction ($\beta$)}
 \label{ssec:headingscap}
 
-The volume of vegetative solids was measured after a cut was made to the cubic vegetation sample. The remaining vegetative substance was separated into two groups of branches and leaves. Each group was packaged using a cloth mesh bag and thin wire. The wire volume and mass of the mesh bag and wire was measured before any displacement testing was conducted to determine only the vegetation material. Before submerging the packaged material, the dry weight of the sample was measured using a Mettler Toledo Jaguar load cell. After determining the dry weight, the packaged material was completely submerged in a bucket with a spout located approximately 3.8 \si{cm} from the top of the bucket. Before submerging the vegetation in water, the bucket was filled entirely with water, then allowed to drain at the lip of the spout to eliminate any additional displaced waterduring the test. Once the packaged vegetation was submerged, the displaced water was fed through the spout and into a glass beaker (Fig. \ref{fig:wdt}). Testing concluded once the flow through tubing stopped or exhibited infrequent drips. The collected beaker water was then poured into a 1000 ml graduated cylinder to determine the volume of solid vegetation.\\
-
-\begin{figure} [!ht]
-	\centering 	\includegraphics[width=1.0\linewidth]{Picture7.jpg}
+The volume of vegetation was measured following a cut to the vegetation sample. The vegetation was separated into two groups of branches and leaves which were packaged using a cloth mesh bag and thin wire. The volume and mass of the mesh bag and wire were pre-determined and subtracted from the total measured volume to determine the volume the vegetative solid. Before submerging the packaged material, the dry weight of the sample was measured using a Mettler Toledo Jaguar load cell. Before submerging the packaged vegetative solid, the water level was constrained to the bottom lip of a spout located approximately 3.8~\si{cm} from the top of the bucket. When the packaged vegetation was submerged, the displaced water was fed through the spout and into a glass beaker (Fig.~\ref{fig:wdt}). After the water flow through the spout of the bucket subsided, the volume of displaced water measured in a 1000 ml graduated cylinder to determine the volume of vegetation. Water displacement testing was conducted three times for each vegetation configuration. The weight of the vegetation was measured in between the displacement tests to account for any additional water that remained after the previous test. Once completing the Water Displacement Test, the solid fraction of the vegetation was calculated by dividing the average vegetation volume by the pre-determined occupied space of the vegetation (0.5~\si{m} x 0.5~\si{m} x 0.5~\si{m} = 0.125~\si{m^{3}}). The uncertainty of the vegetation volume and its respective solid fraction were determined from a combination of the variability of the repeated measurements as well as the resolution of the Mettler Toledo load cell (0.005~\si{kg}).
+\begin{figure} [!]
+	\centering 	\includegraphics[height=\textheight,keepaspectratio]{Picture7.jpg}
 	\caption{Procedure of the water displacement test}
 	\label{fig:wdt}
 \end{figure}
-
-\indent Water displacement testing was conducted three times for each packaged vegetation. The weight of the vegetation was measured in between the displacement tests to account for any additional water that remained after the previous test. Once all volumes were determined for each vegetation cut, the solid fraction of the vegetation was calculated by dividing by the occupied space of the vegetation sample (0.5 \si{m} x 0.5 \si{m} x 0.5 \si{m} = 0.125 \si{m^{3}}). The uncertainty of the measured volume and solid fraction were also calculated from the propagation of error using the resolution of the Mettler Toledo load cell (0.005 kg), the resolution of the graduated cylinder used to measure the volume of the displaced water (5 ml), and the variance of the repeated displacement tests.
 
 \pagebreak
 
@@ -336,108 +336,140 @@ The volume of vegetative solids was measured after a cut was made to the cubic v
 %%%% Results section
 \section{Results}
 \label{sec:results}
-The key result of this work was the drag coefficient determined through a combination of the results provided from each experiment. Additionally, a relationship between the absorption coefficient and solid fraction was also obtained from the image analysis and water displacement experiments.
-
-\subsection{Vegetation Canopy Drag Coefficients}
-\label{ssec:headingscap}
-Table \ref{tab:SumTable} shows the average drag coefficient, and its respective uncertainty of each vegetation configuration categorized by species, cut, and position.
-
-%For vegetation samples in which there were multiple cuts, it can be seen that the free area fraction increases with each cut iteration. The increase in the white fraction corresponds to the reduction of solid within the vegetation since each cut removes more of the canopy.
-
-\begin{table}
-\centering
-\caption{Drag Coefficient Summary}
-\label{tab:SumTable}
-%\begin{adjustbox}{
-  %addcode=
-    %{\begin{minipage}{\width}}
-    %{\caption{Summary Table}\label{tab:SumTable}\end{minipage}},
-  %rotate=90,
-  %center
-%}
-	%\centering
-	\small
-	\begin{tabular}{cccccccccccc}
-	%\caption{Summary Table}	
-			\hline
-\textbf{Sample}	&	\textbf{Cut}	& 	\textbf{Position}	&	$C_{\rm D}$	&	\textbf{C\textsubscript{d} Uncertainty}	&	\\	\hline
-		&		&			&				&						&	\\	
-Bakers Blue Spruce	&	0	& 	A/C	&	3.35	&	0.02	&	\\	
-	&		& 	B/D	&	3.10	&	0.01	&	\\	
-	&	1	& 	A/C	&	3.40	&	0.01	&	\\	
-	&		& 	B/D	&	3.29	&	0.02	&	\\	
-	&	2	& 	A/C	&	2.82	&	0.01	&	\\	
-	&		& 	B/D	&	2.74	&	0.01	&	\\	
-	&	3	& 	A/C	&	2.35	&	0.02	&	\\	
-	&		& 	B/D	&	2.26	&	0.01	&	\\	
-	&		&		&		&		&	\\	
-Blue Shag Eastern White Pine	&	0	& 	A/C	&	3.21	&	0.01	&	\\	
-	&		& 	/BD	&	3.14	&	0.01	&	\\	
-	&		&		&		&		&	\\	
-Evergeen Distylium	&	0	& 	A/C	&	3.15	&	0.01	&	\\	
-	&		& 	B/D	&	3.14	&	0.01	&	\\	
-	&	1	& 	A/C	&	2.87	&	0.01	&	\\	
-	&		& 	B/D	&	2.61	&	0.01	&	\\	
-	&	2	& 	A/C	&	1.85	&	0.01	&	\\	
-	&		& 	B/D	&	2.08	&	0.00	&	\\	
-	&		&		&		&		&	\\	
-Gold Rider Leyland Cypress	&	0	& 	A/C	&	3.18	&	0.01	&	\\	
-	&		& 	B/D	&	3.09	&	0.01	&	\\	
-	&	1	& 	A/C	&	3.29	&	0.01	&	\\	
-	&		& 	B/D	&	3.33	&	0.01	&	\\	
-	&	2	& 	A/C	&	2.57	&	0.01	&	\\	
-	&		& 	B/D	&	3.25	&	0.01	&	\\	
-	&	3	& 	A/C	&	2.97	&	0.01	&	\\	
-	&		& 	B/D	&	3.84	&	0.01	&	\\	
-			& 		&		&		&	\\	
-Kimberley Queen Fern	&	0	& 	A/C	&	3.38	&	0.009	&	\\	
-	&		& 	B/D	&	2.82	&	0.007	&	\\	
-	&		&		&		&		&	\\		
-Robin Red Holly	&	0	&	A/C	&	2.79	&	0.017	&	\\	
-	&		&	B/D	&	2.66	&	0.005	&	\\	
-	&	1	& 	A/C	&	2.68	&	0.003	&	\\	
-	&		& 	B/D	&	1.91	&	0.006	&	\\	
-	&	2	& 	A/C	&	3.03	&	0.003	&	\\	
-	&		& 	B/D	&	2.34	&	0.011	&	\\	
-	&	3	& 	A/C	&	1.85	&	0.015	&	\\	
-	&		& 	B/D	&	1.64	&	0.012	&	\\	
-
-		\hline
-	\end{tabular}
-%\end{adjustbox}
-
-\end{table}
-
-Figure~\ref{fig:DPvU(Overall)} shows the differential pressure measurements taken across the vegetation plotted against the free stream velocity. It can be observed that the differential pressure readings across a given velocity range are higher for vegetation configurations with higher free area fractions. By evaluating Eq.~(\ref{eq:Pressure}), the relationship between the dynamic pressure and the ratio between differential pressure measured across the vegetation and the product of the absorption coefficient and length can be seen in Fig. \ref{fig:DPoveraf(Overall)}. Despite exhibiting different geometric characteristics, Fig. \ref{fig:DPoveraf(Overall)} demonstrates that by incorporating the absorption coefficient and length, the pressure ratio moderately collapses suggesting a fairly consistent drag coefficient for the variety of vegetation canopies.
-
-
-\begin{figure} [h]
-	\includegraphics[width=\linewidth]{DPvU(Overall_Ave).pdf}
-	\caption{Differential pressure measured across different vegetation samples subjected to various free stream velocities.}
-	\label{fig:DPvU(Overall)}
-\end{figure}
-
-\begin{figure}[h]
-	\includegraphics[width=\linewidth]{DPoveraf(Overall_Ave).pdf}
-	\caption{Differential pressure across different vegetation samples over their respective ($\kappa L$) vs. dynamic pressureof.}
-	\label{fig:DPoveraf(Overall)}
-\end{figure}
+The key results of this work is the relationship between the absorption coefficient and solid fraction and more importantly the drag coefficient derived from the measurements made in the Image Analysis and Wind Tunnel Experiments.
 
 \subsection{Relationship between the absorption coefficient $\kappa$ and solid fraction $\beta$ }
 
-Figure \ref{fig:betavkappa} displays each samples' absorption coefficient plotted against their corresponding solid fractions. The markers presented in Figure \ref{fig:betavkappa} indicate the actual measured values while the dotted lines are a linear regression fit of the measured data. It can be observed that the absorption coefficient declines with the cut indicating that the removal of solid material from the vegetation after a cut increases the free area fraction, thus decreasing the absorption coefficient. Furthermore, Fig.~\ref{fig:betavkappa} also shows a discrepancy between the sample positions of the same cut. The difference in the absorption coefficients suggests that the area distribution within the canopy structure is inhomogeneously distributed. In other words, the original assumption that the vegetation canopy has a complex porous structure that is unevenly distributed and asymmetric is further supported by the discrepancy in the positioning data.
+Figure~\ref{fig:betavkappa} presents the relationship between the absorption coefficient and solid fraction of all sample configurations. The markers indicate the measured values while the dotted lines represent a linear regression fit. The linear regression fittings suggest that the absorption coefficient declines with a decrease in the solid fraction. The reduction in the solid fraction corresponds to a cut made on the vegetation sample indicating that the removal of solid material from the vegetation sample modifies the projected open area of the canopy, thus decreasing the absorption coefficient. The strong relationship between the absorption coefficient and the solid fraction demonstrated by high the coefficients of determination ($r^2$) support the formation of the absorption coefficient parameter (Eq.~\ref{eq:Kappa}). However, it should also be noted that the linear regression fittings presented in Fig.~\ref{fig:betavkappa} does not account for the fluctuating surface to volume ratio ($\sigma$) of the sample configuration, which also contributes to the $\kappa$ parameter. 
 
-\begin{figure}[h]
-	\centering 	\includegraphics[width=0.8\linewidth]{Solid_FractionvKappa(Ave).pdf}
-	\caption{Calculated absorption coeficients (\textkappa) plotted against their corresponding solid fractions (\textbeta) }
+\begin{sidewaysfigure}[!]
+	\centering 	\includegraphics[width=1.1\linewidth]{Picture12.jpg}
+	\caption{Calculated absorption coefficients ($\kappa$) of vegetation sample configuration plotted against their corresponding solid fractions ($\beta$) } Fig.~\ref{fig:DPoveraf(Overall)}
 	\label{fig:betavkappa}
-\end{figure}
+\end{sidewaysfigure}
+
 \pagebreak
+
+
+\subsection{Vegetation Canopy Drag Coefficients}
+\label{ssec:headingscap}
+
+Figure~\ref{fig:DPvU(Overall)} displays the free stream velocity for each sample configuration and the resulting differential pressure measurement is taken across the vegetation. The results of each sample configuration show that the differential pressure measured across the vegetation increases with an increase in the air velocity.  Early cuts of vegetation samples, previously shown in Fig.~\ref{fig:betavkappa} to exhibit high $\kappa$ values, appear to achieve higher differential pressure measurements taken across the vegetation compared to final cut sample configurations (no leaves configurations). The variation in the pressure loss across the vegetation concerning the variation in $\kappa$ suggests that as the plant structure obtains a higher open area, there are larger channels for larger volumes of air to move through. The results of this measurement follow previous work in which the resistance to air flow of vegetation was studied~\cite{Bitog2011}.
+
+The ratio between the differential pressure across the vegetation over $\kappa L$ and the dynamic pressure exerted by the incoming air is presented in Fig.~\ref{fig:DPoveraf(Overall)}. In comparison to Figure~\ref{fig:DPvU(Overall)}, the differential pressure across the vegetation over $\kappa L$  for each sample configuration is observed to be linear with the dynamic pressure. The drag coefficients for each sample configuration was determined from the slope of a linear regression fitting of the measured data shown in Fig.~\ref{fig:DPoveraf(Overall)}. No linear regression fitting was observed to have a coefficient of determination value less than 0.98, indicating a close representation of the fitted regression line to the measured data. A summary of all sample configurations' (N=68) calculated drag coefficients and their respective uncertainties are presented in Table \ref{tab:SumTable}.
+
+\begin{sidewaysfigure} [!]
+	\centering
+	\includegraphics[width=\textwidth,keepaspectratio]{Picture8.jpg}
+	\caption{Differential pressure measurements of vegetation samples subjected to a range of free stream velocities}
+	\label{fig:DPvU(Overall)}
+\end{sidewaysfigure}
+
+\begin{sidewaysfigure}[!]
+	\centering
+	\includegraphics[width=\textwidth,keepaspectratio]{Picture9.jpg}
+	\caption{Differential pressure measurements of vegetation samples over ($\kappa L$) vs. dynamic pressure}
+	\label{fig:DPoveraf(Overall)}
+\end{sidewaysfigure}
+
+The distribution of all sample configurations' drag coefficient is shown in Fig.~\ref{fig:Histogram}. A Kolmogorov-Smirnov test  (K-S test) was implemented to test the normality of the drag coefficient data. The K-S test determined that the drag coefficients of all sample configurations do not significantly vary from normality, D(68)=~0.09, non-significant. The normal distribution of the data is further supported by the "bell curve" fitting displayed in  Fig.~\ref{fig:Histogram}. Additionally, the average drag coefficient of all sample configurations was determined to be 2.82 with a standard deviation of 0.62.
+
+\begin{figure}[!h]
+	%\centering 	
+\includegraphics[width=\textwidth,keepaspectratio]{Picture11.jpg}
+	\caption{Distribution of vegetation samples drag coefficients with noted mean and standard deviation values}
+	\label{fig:Histogram}
+\end{figure}
+
+\begin{table}
+
+\begin{adjustbox}{
+  addcode=
+    {\begin{minipage}{\width}}
+    {\caption{Drag Coefficient Summary}\label{tab:SumTable}\end{minipage}},
+  rotate=90,
+center
+}
+													
+	%\centering
+	\footnotesize
+	\begin{tabular}{cccccccccc}
+	%\caption{Summary Table}	
+			\hline
+\textbf{Sample}		&	\textbf{Cut}	&\textbf{Position}& $C_{\rm D}$ 	&\textbf{Uncertainty}	&\textbf{Sample}	&	\textbf{Cut}	&\textbf{Position}& 	\textbf{$C_{\rm D}$ }&\textbf{Uncertainty}\\ 
+\hline
+\\[0.05cm]
+Bakers Blue Spruce			&	0	&	A	& 	3.58	&	0.09				&Gold Rider Leyland Cypres&	0	&	A	& 	3.04	&	0.08	\\
+					&		&	B	& 	3.15	&	0.08				&				&		&	B	& 	3.25	&	0.08	\\
+					&		&	C	& 	3.11	&	0.08				&				&		&	C	& 	3.35	&	0.08	\\
+					&		&	D	& 	3.04	&	0.08				&				&		&	D	& 	2.97	&	0.08	\\
+					&	1	&	A	& 	3.72	&	0.10				&				&	1	&	A	& 	3.34	&	0.09	\\
+					&		&	B	& 	2.98	&	0.08				&				&		&	B	& 	2.90	&	0.08	\\
+					&		&	C	& 	3.07	&	0.08				&				&		&	C	& 	3.27	&	0.08	\\
+					&		&	D	& 	3.60	&	0.09				&				&		&	D	& 	3.82	&	0.10	\\
+					&	2	&	A	& 	3.20	&	0.09				&				&	2	&	A	& 	2.10	&	0.06	\\
+					&		&	B	& 	2.65	&	0.07				&				&		&	B	& 	3.16	&	0.09	\\
+					&		&	C	& 	2.47	&	0.07				&				&		&	C	& 	3.11	&	0.09	\\
+					&		&	D	& 	2.83	&	0.08				&				&		&	D	& 	3.34	&	0.09	\\
+					&	3	&	A	& 	2.51	&	0.11				&				&	3	&	A	& 	2.92	&	0.12	\\
+					&		&	B	& 	2.26	&	0.10				&				&		&	B	& 	3.84	&	0.20	\\
+					&		&	C	& 	2.16	&	0.11				&				&		&	C	& 	3.04	&	0.14	\\
+					&		&	D	& 	2.25	&	0.10				&				&		&	D	& 	3.84	&	0.19	\\
+					&		&		& 		&					&				&		&		& 		&		\\
+Blue Shag Eastern White Pine	&	0	&	A	& 	4.02	&	0.11				&Kimberly Queen Fern	&	0	&	A	& 	3.19	&	0.09	\\
+					&		&	B	& 	2.49	&	0.07				&				&		&	B	& 	2.84	&	0.08	\\	
+					&		&	C	& 	1.90	&	0.06				&				&		&	C	& 	3.00	&	0.09	\\
+					&		&	D	& 	3.37	&	0.09				&				&		&	D	& 	2.39	&	0.07	\\
+					&		&		& 		&					&				&		&		& 		&		\\
+Evergreen Distylium			&	0	&	A	& 	3.24	&	0.09				&Robin Red Holly		&	0	&	A	& 	3.08	&	0.07	\\
+					&		&	B	& 	2.89	&	0.08				&				&		&	B	& 	2.60	&	0.07	\\
+					&		&	C	& 	3.06	&	0.08				&				&		&	C	& 	2.50	&	0.06	\\
+					&		&	D	& 	3.40	&	0.09				&				&		&	D	& 	2.72	&	0.07	\\
+					&	1	&	A	& 	2.66	&	0.08				&				&	1	&	A	& 	2.81	&	0.07	\\
+					&		&	B	& 	2.31	&	0.07				&				&		&	B	& 	2.00	&	0.05	\\
+					&		&	C	& 	3.07	&	0.09				&				&		&	C	& 	2.53	&	0.06	\\
+					&		&	D	& 	2.91	&	0.08				&				&		&	D	& 	1.83	&	0.05	\\
+					&	2	&	A	& 	2.01	&	0.06				&				&	2	&	A	& 	3.36	&	0.09	\\
+					&		&	B	& 	1.53	&	0.05				&				&		&	B	& 	2.20	&	0.05	\\
+					&		&	C	& 	1.68	&	0.06				&				&		&	C	& 	2.66	&	0.06	\\
+					&		&	D	& 	2.60	&	0.09				&				&		&	D	& 	2.48	&	0.07	\\
+					&		&		& 		&					&				&	3	&	A	& 	2.05	&	0.07	\\
+					&		&		& 		&					&				&		&	B	& 	1.58	&	0.06	\\
+					&		&		& 		&					&				&		&	C	& 	1.64	&	0.06	\\
+					&		&		& 		&					&				&		&	D	& 	1.72	&	0.06	\\
+\\[0.05cm]
+\hline														
+
+	\end{tabular}
+\end{adjustbox}
+
+\end{table}
+
+A one-way analysis of variance (ANOVA) was implemented on the drag coefficients of the different vegetation species. The analysis of the different vegetation species yielded a significant variation among the species, \textit{F}(5,62)=~4.88, \textit{p}=~7.97E-4. A Tukey HSD test subsequently applied to identify which species' average drag coefficients were significantly different from each other. The results showed one significant difference between the species' average drag coefficients: the Robin Red Holly and Gold-Rider Leyland Cypress. Despite this statistically significant difference, the average drag coefficients of the Robin Red Holly and Gold-Rider Leyland Cypress are both within one standard deviation away from the overall average drag coefficient, as demonstrated in Fig.~\ref{fig:Histogram},  and therefore is not large enough to have a practical implication. It can then be concluded that the variance of drag coefficients determined for each species is non-significant meaning the overall average drag coefficient presented in Fig.~\ref{fig:Histogram} could be applied as a consistent drag coefficient for vegetation canopies in CFD models.  
 
 \section{Comparison Between Vegetation Data and Tube Bank Models}
 \label{sec:comp}
 
-A hydraulic resistant tube bank model was evaluated using similar geometric features (absorption coefficient and solid fraction) of the vegetation canopy samples to compare the drag coefficients of the two different configurations. Given the absorption coefficient and solid fraction an optimization code was applied to determine the tube bank configuration. The absorption coefficient and solid fraction values were slightly adjusted to accommodate row and number of tube integers. Once a tube bank configuration was obtained, the pressure loss across the tube banks were determined using I.E. Idelchik's hydraulic resistant tube bank model.  Eq.~\ref{eq:Pressure}, was then evaluated given the adjusted tube bank configuration parameters to determine the drag coefficient. It should be noted that in the calculation for the tube bank's drag coefficient, the distance L was assumed to be between rows alternative to across the entire vegetation.\\
+In comparison to previously reported drag coefficients of vegetation~\cite{Cao2012,Jalonen2014,Mayhead1973,Gillies2002,Ishikawa2006}, the drag coefficients of the bulk vegetation determined in this study are higher. The discrepancy between drag coefficients may attribute to the investigated vegetation geometry. As previously discussed in Sec.~\ref{sec:intro}, most studies examine the wind resistance of the entire plant structure (single plant or small tree) while this work focuses exclusively on ``bulk'' vegetation. Therefore, the ``bulk'' vegetation samples were compared to a hydraulic resistant tube bank model that exhibited similar geometric features (i.e., absorption coefficient and solid fraction) to provide a more relevant comparison of the drag coefficients. A tube bank model for each sample configuration with approximate absorption coefficient and solid fraction was determined using an optimization formulation. In order to determine the tube bank model, the absorption coefficient and solid fraction values were slightly adjusted to accommodate the number of rows and tube integers. The drag coefficient of the tube bank configuration was determined from Eq.~\ref{eq:Pressure} where the pressure differential was calculated using I.E. Idelchik's Handbook of Hydraulic Resistant tube bank mode~\cite{Idelchick1994}.
+
+\begin{figure}[!]
+	\centering 	
+\includegraphics[width=\textwidth,keepaspectratio]{Picture13.pdf}
+	\caption{Drag Coefficient comparison between Gold Rider Leyland Cypress (Cut 2) and its corresponding tube bank configuration with respect to velocity}
+	\label{fig:TBGR}
+\end{figure}
+
+\begin{figure}[!]
+	\centering 	
+\includegraphics[width=\textwidth,keepaspectratio]{Picture14.pdf}
+	\caption{Drag Coefficient comparison between Bakers Blue Spruce (Cut 2) and its corresponding tube bank configuration with respect to velocity}
+	\label{fig:TBBB}
+\end{figure}
+
+Fig.~\ref{fig:TBGR} and \ref{fig:TBBB} show a comparison of the drag coefficients from the Gold Rider Leyland Cypress  and Bakers Blue Spruce and their corresponding tube bank models with similar geometric features. The figures both indicate that the tube bank model is not an accurate representation of the vegetation samples' drag coefficients. However, the drag coefficients of the vegetation samples and tube bank model are relatively comparable compared to structures with a different geometric orientation which further justifies the drag coefficients presented in this study. 
+
+
+%A hydraulic resistant tube bank model was evaluated using similar geometric features (absorption coefficient and solid fraction) of the vegetation canopy samples to compare the drag coefficients of the two different configurations.  Once a tube bank configuration was obtained, the pressure loss across the tube banks were determined using I.E. Idelchik's hydraulic resistant tube bank model.  Equation~\ref{eq:Pressure}, was then evaluated given the adjusted tube bank configuration parameters to determine the drag coefficient. It should be noted that in the calculation for the tube bank's drag coefficient, the distance L was assumed to be between rows alternative to across the entire vegetation.\\
 %\indent The comparison between the vegetation sample's drag coefficient for a range of velocities and the drag coefficient of the corresponding tube bank is presented in Fig.\ref{fig:betavkappa}. It can be observed that by relatively matching the absorption coefficient, solid fraction, and average diameter of the vegetation sample, the tube bank model alligns fairly well with the measured data.
 
 
@@ -461,13 +493,21 @@ A hydraulic resistant tube bank model was evaluated using similar geometric feat
 
 \pagebreak
 
+\section*{Conclusion}
+This report documents a series of experiments implemented to determine the absorption coefficient, pressure loss, and the solid fraction of different types of vegetation sample configurations. The primary objective of this work was to calculate the drag coefficients of ``bulk'' vegetation that can be incorporated into CFD models. In addition to establishing drag coefficients of ``bulk''  vegetation, notable findings regarding vegetation structure and similarities between drag coefficients of plant species were also discovered from this work. It cannot be concluded, however, that the findings from this work applies to all ``bulk'' vegetation, but exclusively to the samples studied in these experiments. 
+
+\begin{enumerate}
+  \item The calculated absorption coefficient for each sample demonstrated a strong relationship with its corresponding solid fraction. 
+  \item The overall average drag coefficient of the bulk vegetation was found to be 2.82 with a standard deviation of 0.62. The differences between the average drag coefficients of different plant species were concluded to be non-significant suggesting that the overall average drag coefficient could be used as a constant value in CFD models of various plant types.  
+\end{enumerate}
+
 \section*{Acknowledgments}
 
 \noindent Matthew Bundy and Artur Chernovksy of the National Fire Research Laboratory assisted in conducting these experiments and in processing the data.   \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Acknowledgments not required
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\pagebreak
 \section*{References}
 \addcontentsline{toc}{section}{References}
 \bibliographystyle{techpubs}
