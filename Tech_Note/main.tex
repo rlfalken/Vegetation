@@ -396,7 +396,7 @@ center
 	\begin{tabular}{cccccccccc}
 	%\caption{Summary Table}	
 			\hline
-\textbf{Sample}		&	\textbf{Cut}	&\textbf{Position}& $C_{\rm D}$ 	&\textbf{Uncertainty}	&\textbf{Sample}	&	\textbf{Cut}	&\textbf{Position}& 	\textbf{$C_{\rm D}$ }&\textbf{Uncertainty}\\ 
+\textbf{Sample}		&	\textbf{Cut}	&\textbf{Position}& $C_{\rm D}$ 	&\textbf{Uncertainty}	&\textbf{Sample}	&	\textbf{Cut}	&\textbf{Position}& 	\textbf{$C_{\rm D}$ }&\textbf{Uncertainty}\\
 \hline
 \\[0.05cm]
 Bakers Blue Spruce			&	0	&	A	& 	3.58	&	0.40				&Gold Rider Leyland Cypres&	0	&	A	& 	3.04	&	0.44	\\
@@ -450,7 +450,9 @@ A one-way analysis of variance (ANOVA) was implemented on the drag coefficients 
 \section{Comparison Between Vegetation Data and Tube Bank Models}
 \label{sec:comp}
 
-In comparison to previously reported drag coefficients of vegetation~\cite{Cao2012,Jalonen2014,Mayhead1973,Gillies2002,Ishikawa2006}, the drag coefficients of the bulk vegetation determined in this study are higher. The discrepancy between drag coefficients may attribute to the investigated vegetation geometry. As previously discussed in Sec.~\ref{sec:intro}, most studies examine the wind resistance of the entire plant structure (single plant or small tree) while this work focuses exclusively on ``bulk'' vegetation. Therefore, the ``bulk'' vegetation samples were compared to a hydraulic resistant tube bank model that exhibited similar geometric features (i.e., absorption coefficient and solid fraction) to provide a more relevant comparison of the drag coefficients. A tube bank model for each sample configuration with approximate absorption coefficient and solid fraction was determined using an optimization formulation. In order to determine the tube bank model, the absorption coefficient and solid fraction values were slightly adjusted to accommodate the number of rows and tube integers. The drag coefficient of the tube bank configuration was determined from Eq.~\ref{eq:Pressure} where the pressure differential was calculated using I.E. Idelchik's Handbook of Hydraulic Resistant tube bank mode~\cite{Idelchick1994}.
+In comparison to previous work~\cite{Cao2012,Jalonen2014,Mayhead1973,Gillies2002,Ishikawa2006}, the magnitude of the measured drag coefficients in this study is relatively large. As discussed in Section~\ref{sec:intro}, most previous studies have measured the wind resistance of a single plant or tree within a larger wind tunnel while this work considered a relatively homogenous distribution of vegetation within a tunnel. The interpretation of ``free stream'' velocity, shape factor, cross sectional area, and so on, are often different in these studies, making it difficult to compare drag coefficients from one study to another. Within the field, there is no single definition of drag coefficient in regard to vegetation.
+
+As a way to verify the accuracy of our wind tunnel measurements and the validity of our drag coefficient derivation, we considered a bank of regularly-spaced, staggered, vertical cylinders within our wind tunnel, using both actual steel rods and empirical results from Idelchick~\cite{Idelchick1994}. For each of the measured vegetation samples, a comparable configuration of vertical tubes was derived such that the volume fraction, $\beta$, free area fraction, $W$, and characteristic diameter, $D$, matched as closely as possible. The expected pressure drop through the tube bank was either measured directly in the wind tunnel or taken from Idelchick, and the corresponding drag coefficient was determined from Eq.~\ref{eq:Pressure}.
 
 \begin{figure}[!]
 	\centering 	
@@ -466,7 +468,7 @@ In comparison to previously reported drag coefficients of vegetation~\cite{Cao20
 	\label{fig:TBBB}
 \end{figure}
 
-Fig.~\ref{fig:TBGR} and \ref{fig:TBBB} show a comparison of the drag coefficients from the Gold Rider Leyland Cypress  and Bakers Blue Spruce and their corresponding tube bank models with similar geometric features. The figures both indicate that the tube bank model is not an accurate representation of the vegetation samples' drag coefficients. However, the drag coefficients of the vegetation samples and tube bank model are relatively comparable compared to structures with a different geometric orientation which further justifies the drag coefficients presented in this study.
+Figures~\ref{fig:TBGR} and \ref{fig:TBBB} compare the drag coefficients from the Gold Rider Leyland Cypress and Bakers Blue Spruce with their tube bank equivalents. While the match is not expected to be perfect given the difference in skin fraction, shape, and so on, the drag coefficients of each configuration is comparable. 
 
 
 %A hydraulic resistant tube bank model was evaluated using similar geometric features (absorption coefficient and solid fraction) of the vegetation canopy samples to compare the drag coefficients of the two different configurations.  Once a tube bank configuration was obtained, the pressure loss across the tube banks were determined using I.E. Idelchik's hydraulic resistant tube bank model.  Equation~\ref{eq:Pressure}, was then evaluated given the adjusted tube bank configuration parameters to determine the drag coefficient. It should be noted that in the calculation for the tube bank's drag coefficient, the distance L was assumed to be between rows alternative to across the entire vegetation.\\
