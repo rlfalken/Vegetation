@@ -236,7 +236,7 @@ Vegetation Canopy; Drag Coefficient; Wind Tunnel
 
 The Fire Research Division of the National Institute of Standards and Technology (NIST) has developed several numerical models to predict the behavior of fires within buildings. One of the models, a computational fluid dynamics (CFD) code called the Fire Dynamics Simulator (FDS)~\cite{FDS_Tech_Guide}, has been extended to model fires in the wildland-urban interface (WUI). One crucial component of this type of modeling is a proper treatment of wind-driven flow through vegetation. The objective of the experiments described in this report is to measure the drag coefficient of an empirical sub-model appropriate for CFD.
 
-Measurements of this type have been performed by other researchers~\cite{Cao2012,Jalonen2014,Mayhead1973,Gillies2002,Ishikawa2006}, most of whom used wind tunnels of various sizes. In most cases, a single plant or small tree was positioned within the tunnel and the resistance force measured. However, such a measurement is not readily applicable to a CFD model which does not necessarily consider the tree as a whole but rather as a volume occupied by subgrid-scale objects that decrease momentum in the grid cells that they occupy. Some plants might be smaller than a characteristic grid cell, and some trees might be larger, but in either case, these objects are just momentum sinks within individual grid cells that require some drag coefficient that is appropriate to the local conditions. That is, it is not appropriate to talk about the ``freestream velocity'' within a CFD model, as the velocity changes from cell to cell. 
+Measurements of this type have been performed by other researchers~\cite{Cao2012,Jalonen2014,Mayhead1973,Gillies2002,Ishikawa2006}, most of whom used wind tunnels of various sizes. In most cases, a single plant or small tree was positioned within the tunnel and the resistance force measured. However, such a measurement is not readily applicable to a CFD model which does not necessarily consider the tree as a whole but rather as a volume occupied by subgrid-scale objects that decrease momentum in the grid cells that they occupy. Some plants might be smaller than a characteristic grid cell, and some trees might be larger, but in either case, these objects are just momentum sinks within individual grid cells that require some drag coefficient that is appropriate to the local conditions. That is, it is not appropriate to talk about the ``freestream velocity'' within a CFD model, as the velocity changes from cell to cell.
 
 
 \section{Model Development}
@@ -311,7 +311,7 @@ The absorption coefficient of the vegetation samples were determined from the fr
 
 The images were processed using MATLAB's Image Processing Toolbox. Imported colored images were first converted into a grey scale and then a binary (black and white) image using a pre-set threshold level. The binary images were then cropped within the cardboard frame to eliminate non-vegetative substances and to evaluate the projected image of the vegetation exclusively. Once the projected image was obtained, a pixel count was conducted to determine the free-area coefficient of the vegetation.
 
-The uncertainty of the free-area coefficients was determined by measuring the projected areas of objects with pre-determined sizes through the same evaluation process. A bias uncertainty of 1~\% from the true free-area coefficient was defined for all investigated objects with pre-determined sizes. The bias uncertainty was assumed for all free-area coefficients of the vegetation sample configurations. 
+The uncertainty of the free-area coefficients was determined by measuring the projected areas of objects with pre-determined sizes through the same evaluation process. A bias uncertainty of 1~\% from the true free-area coefficient was defined for all investigated objects with pre-determined sizes. The bias uncertainty was assumed for all free-area coefficients of the vegetation sample configurations.
 
 \subsection{Description of the Wind Tunnel}
 \label{ssec:headingscap}
@@ -358,7 +358,7 @@ The key results of this work are the relationship between the absorption coeffic
 
 \subsection{Relationship between the absorption coefficient $\kappa$ and solid fraction $\beta$ }
 
-Figure~\ref{fig:betavkappa} presents the relationship between the absorption coefficient and solid fraction of all sample configurations. The markers indicate the measured values while the dotted lines represent a linear regression fit. The linear regression fittings suggest that the absorption coefficient declines with a decrease in the solid fraction. The reduction in the solid fraction corresponds to a cut made on the vegetation sample indicating that the removal of solid material from the vegetation sample modifies the projected free-area coefficient of the canopy, thus decreasing the absorption coefficient. The strong relationship between the absorption coefficient and the solid fraction demonstrated by high the coefficients of determination ($r^2$) support the formation of the absorption coefficient parameter (Eq.~\ref{eq:Kappa}). 
+Figure~\ref{fig:betavkappa} presents the relationship between the absorption coefficient and solid fraction of all sample configurations. The markers indicate the measured values while the dotted lines represent a linear regression fit. The linear regression fittings suggest that the absorption coefficient declines with a decrease in the solid fraction. The reduction in the solid fraction corresponds to a cut made on the vegetation sample indicating that the removal of solid material from the vegetation sample modifies the projected free-area coefficient of the canopy, thus decreasing the absorption coefficient. The strong relationship between the absorption coefficient and the solid fraction demonstrated by high the coefficients of determination ($r^2$) support the formation of the absorption coefficient parameter (Eq.~\ref{eq:Kappa}).
 
 \begin{figure}[!]
 	\centering 	
@@ -367,7 +367,7 @@ Figure~\ref{fig:betavkappa} presents the relationship between the absorption coe
 	\label{fig:betavkappa}
 \end{figure}
 
-One unique component of Fig.~\ref{fig:betavkappa} is the linear regression fitting of the Robin Red Holly. As the solid fraction decreases, the absorption coefficient should approach zero, as demonstrated by most samples. The Robin Red Holly, however, is offset; exhibiting similar absorption coefficient values relative to the other examples despite having a higher solid fraction. The reason for this discrepancy is due to the ratio between branch and leaf and their contributions to the solid fraction and surface to volume ratio. As shown in Table~\ref{tab:RatioTable}, the volume ratio between branches and leaves of the Robin Red Holly is substantially higher relative to the other samples and does not significantly differ between cut iterations. As a result, the surface to volume ratio decreases from the removal of leaves, thus reducing the absorption coefficient, while still maintaining a relatively consistent solid fraction due to the significant volume contribution of the branches.  
+One unique component of Fig.~\ref{fig:betavkappa} is the linear regression fitting of the Robin Red Holly. As the solid fraction decreases, the absorption coefficient should approach zero, as demonstrated by most samples. The Robin Red Holly, however, is offset; exhibiting similar absorption coefficient values relative to the other examples despite having a higher solid fraction. The reason for this discrepancy is due to the ratio between branch and leaf and their contributions to the solid fraction and surface to volume ratio. As shown in Table~\ref{tab:RatioTable}, the volume ratio between branches and leaves of the Robin Red Holly is substantially higher relative to the other samples and does not significantly differ between cut iterations. As a result, the surface to volume ratio decreases from the removal of leaves, thus reducing the absorption coefficient, while still maintaining a relatively consistent solid fraction due to the significant volume contribution of the branches.
 
 \begin{table}[!]
 \caption[Branch and leaf volume ratio of vegetation samples]{Branch and leaf volume ratio of vegetation samples with mulitple cut iterations}
@@ -425,7 +425,7 @@ The distribution of all sample configurations' drag coefficient is shown in Fig.
 	\label{fig:Histogram}
 \end{figure}
 
-\begin{sidewaystable}
+\begin{table}
 \caption{Drag Coefficient Summary of Vegetation Samples}
 \label{tab:SumTable}
 \centering
@@ -436,7 +436,7 @@ The distribution of all sample configurations' drag coefficient is shown in Fig.
 \textbf{Sample}		&	\textbf{Cut}	&\textbf{Position}& $C_{\rm d}$ 	&\textbf{Uncertainty}	&\textbf{Sample}	&	\textbf{Cut}	&\textbf{Position}& 	\textbf{$C_{\rm d}$ }&\textbf{Uncertainty}\\
 \hline
 \\[0.05cm]
-Bakers Blue Spruce			&	0	&	A	& 	3.6	&	0.4				&Gold Rider Leyland Cypress&	0	&	A	& 	3.0	&	0.4	\\
+Blue Spruce			&	0	&	A	& 	3.6	&	0.4				& Cypress       &	0	&	A	& 	3.0	&	0.4	\\
 					&		&	B	& 	3.2	&	0.4				&				&		&	B	& 	3.3	&	0.4	\\
 					&		&	C	& 	3.1	&	0.4				&				&		&	C	& 	3.4	&	0.5	\\
 					&		&	D	& 	3.0	&	0.4				&				&		&	D	& 	3.0	&	0.4	\\
@@ -453,12 +453,12 @@ Bakers Blue Spruce			&	0	&	A	& 	3.6	&	0.4				&Gold Rider Leyland Cypress&	0	&	A	
 					&		&	C	& 	2.2	&	0.4				&				&		&	C	& 	3.0	&	0.4	\\
 					&		&	D	& 	2.3	&	0.4				&				&		&	D	& 	3.8	&	0.5	\\
 					&		&		& 		&					&				&		&		& 		&		\\
-Blue Shag Eastern White Pine	&	0	&	A	& 	4.0	&	0.6				&Kimberly Queen Fern	&	0	&	A	& 	3.2	&	0.4	\\
+White Pine	        &	0	&	A	& 	4.0	&	0.6				& Fern	        &	0	&	A	& 	3.2	&	0.4	\\
 					&		&	B	& 	2.5	&	0.3				&				&		&	B	& 	2.8	&	0.4	\\	
 					&		&	C	& 	1.9	&	0.3				&				&		&	C	& 	3.0	&	0.4	\\
 					&		&	D	& 	3.4	&	0.4				&				&		&	D	& 	2.4	&	0.3	\\
 					&		&		& 		&					&				&		&		& 		&		\\
-Evergreen Distylium			&	0	&	A	& 	3.2	&	0.3				&Robin Red Holly		&	0	&	A	& 	3.1	&	0.4	\\
+Distylium			&	0	&	A	& 	3.2	&	0.3				&Red Holly		&	0	&	A	& 	3.1	&	0.4	\\
 					&		&	B	& 	2.9	&	0.3				&				&		&	B	& 	2.6	&	0.3	\\
 					&		&	C	& 	3.1	&	0.3				&				&		&	C	& 	2.5	&	0.3	\\
 					&		&	D	& 	3.4	&	0.4				&				&		&	D	& 	2.7	&	0.3	\\
@@ -478,7 +478,7 @@ Evergreen Distylium			&	0	&	A	& 	3.2	&	0.3				&Robin Red Holly		&	0	&	A	& 	3.1	&
 \hline														
 
 \end{tabular}
-\end{sidewaystable}
+\end{table}
 
 A one-way analysis of variance (ANOVA) was implemented on the drag coefficients of the different vegetation species. The analysis of the different vegetation species yielded a significant variation among the species, \textit{F}(5,62)=\,4.88, \textit{p}=\,7.97E-4. A Tukey HSD test subsequently applied to identify which species' average drag coefficients were significantly different from each other. The results showed one significant difference between the species' average drag coefficients: the Robin Red Holly and Gold-Rider Leyland Cypress. Despite this statistically significant difference, the average drag coefficients of the Robin Red Holly and Gold-Rider Leyland Cypress are both within one standard deviation away from the overall average drag coefficient, as demonstrated in Fig.~\ref{fig:Histogram},  and therefore is not large enough to have a practical implication. It can then be concluded that the variance of drag coefficients determined for each species is non-significant meaning the overall average drag coefficient presented in Fig.~\ref{fig:Histogram} could be applied as a consistent drag coefficient for vegetation canopies in CFD models.
 
@@ -487,12 +487,12 @@ A one-way analysis of variance (ANOVA) was implemented on the drag coefficients 
 
 In comparison to previous work~\cite{Cao2012,Jalonen2014,Mayhead1973,Gillies2002,Ishikawa2006}, the magnitude of the measured drag coefficients in this study is relatively large. As discussed in Section~\ref{sec:intro}, most previous studies have measured the wind resistance of a single plant or tree within a larger wind tunnel while this work considered a relatively homogenous distribution of vegetation within a tunnel. The interpretation of ``freestream'' velocity, shape factor, cross-sectional area, and so on, are often different in these studies, making it difficult to compare drag coefficients from one study to another. Within the field, there is no single definition of drag coefficient in regard to vegetation.
 
-As a way to verify the accuracy of our wind tunnel measurements and the validity of our drag coefficient derivation, we considered a bank of regularly-spaced, staggered, vertical cylinders within our wind tunnel, using both actual steel rods and empirical results from Idelchick~\cite{Idelchick1994}. For each of the measured vegetation samples, a comparable configuration of vertical tubes was derived such that the volume fraction, $\beta$, absorption coefficient, $\kappa$, and characteristic diameter, $D$, match as closely as possible (see Table~\ref{tab:tube_parameters}). The characteristic diameter was calculated from Eq.~\ref{eq:Kappa} using the measured $\beta$ and $\kappa$ values and assuming a cylindrical shape factor ($C_{\mathrm{s}}$ = $\frac{1}{\pi}$). The expected pressure drop through the tube bank was either measured directly in the wind tunnel or taken from Idelchick (Eq.~\ref{eq:IdelchickTB}), and the corresponding drag coefficient was determined from Eq.~\ref{eq:Pressure}.
+As a way to verify the accuracy of our wind tunnel measurements and the validity of our drag coefficient derivation, we considered a bank of regularly-spaced, staggered, vertical cylinders within our wind tunnel, using both actual steel rods and empirical results from Idelchick~\cite{Idelchick1994}. For each of the measured vegetation samples, a comparable configuration of vertical tubes was derived such that the volume fraction, $\beta$, absorption coefficient, $\kappa$, and characteristic diameter, $D$, match as closely as possible (see Table~\ref{tab:tube_parameters}). The characteristic diameter was calculated from Eq.~\ref{eq:Kappa} using the measured $\beta$ and $\kappa$ values and assuming a cylindrical shape factor ($C_{\mathrm{s}} = 1/\pi$). The expected pressure drop through the tube bank was either measured directly in the wind tunnel or taken from Idelchick (Eq.~\ref{eq:IdelchickTB}), and the corresponding drag coefficient was determined from Eq.~\ref{eq:Pressure}.
 \begin{equation}
 \label{eq:IdelchickTB}
-\Delta P = \frac{\rho}{2}\,\frac{A\, Re^{-0.25}}{W^{2}}\, U^2
+\Delta P = \frac{\rho}{2}\,\frac{A\, \mathrm{Re}^{-0.25}}{W^{2}}\, U^2
 \end{equation}
-In Eq.~\ref{eq:IdelchickTB}, $A$ is defined as a geometric parameter determined from the tube bank configuration and $Re$ is Reynold's number which must be greater than 3E3 for the empirical model to apply.  
+In Eq.~\ref{eq:IdelchickTB}, $A$ is defined as a geometric parameter determined from the tube bank configuration and Re is the Reynolds number which must be greater than 3000 for the empirical model to apply.
 
 \begin{table}[!]
     \centering
@@ -500,7 +500,7 @@ In Eq.~\ref{eq:IdelchickTB}, $A$ is defined as a geometric parameter determined 
     \label{tab:tube_parameters}
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
     \hline
-                                 & \multicolumn{2}{|c|}{$\beta$ (x10$^{2}$)} & \multicolumn{2}{|c|}{$\kappa$ (m$^{-1}$)} & \multicolumn{2}{|c|}{$D$ (mm)} &                             &                                  \\ \cline{2-7}
+                                 & \multicolumn{2}{|c|}{$\beta$ (\%)} & \multicolumn{2}{|c|}{$\kappa$ (m$^{-1}$)} & \multicolumn{2}{|c|}{$D$ (mm)} &                             &                                  \\ \cline{2-7}
     \raisebox{1.5ex}[0pt]{Pos.}  & Veg.             & Tubes      & Veg.                 & Tubes              & Veg.              & Tubes      & \raisebox{1.5ex}[0pt]{Rows} & \raisebox{1.5ex}[0pt]{Tubes/Row} \\ \hline \hline
     \multicolumn{9}{|c|}{Gold Rider Leyland Cypress, Cut 2}                                                                                                                                                    \\ \hline
     A                            & 1.2            & 1.1      & 1.8                  & 1.7                & 8.5               & 9.5        & 4                           & 5                                \\ \hline
