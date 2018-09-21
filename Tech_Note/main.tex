@@ -409,7 +409,7 @@ Evergreen Distylium			&	0		&	1.0							&Robin Red Holly			&	0		&	11						\\
 \subsection{Vegetation Canopy Drag Coefficients}
 \label{ssec:headingscap}
 
-Figure~\ref{fig:DPvU(Overall)} displays the relationship between the freestream velocity and the pressure drop for each sample configuration. The results demonstrate the expected quadratic relationship. Replotting the data as shown in Fig.~\ref{fig:DPoveraf(Overall)} yields the drag coefficient for each sample configuration as determined by calculating the slope of each line of data points. No linear regression fitting was observed to have a coefficient of determination value less than 0.98, indicating a close representation of the fitted regression line to the measured data. A summary of all 68 calculated drag coefficients and their respective uncertainties are presented in Table \ref{tab:SumTable}\footnote{The procedure for determining the drag coefficient uncertainty as shown in this table can be found in Appendix~\ref{sec:UncertaintyDrag}. For most instances, the uncertainty in the velocity measurment was found to be the primary contributor to the drag coefficient uncertainty. In other cases, the uncertainty of the measured pressure loss across the vegetation was the primary contributor to the drag coefficient uncertainty.}.
+Figure~\ref{fig:DPvU(Overall)} displays the relationship between the freestream velocity and the pressure drop for each sample configuration. The results demonstrate the expected quadratic relationship. Replotting the data as shown in Fig.~\ref{fig:DPoveraf(Overall)} yields the drag coefficient for each sample configuration as determined by calculating the slope of each line of data points. No linear regression fitting was observed to have a coefficient of determination value less than 0.98, indicating a close representation of the fitted regression line to the measured data. A summary of all 68 calculated drag coefficients and their respective uncertainties are presented in Table \ref{tab:SumTable}\footnote{The procedure for determining the drag coefficient uncertainty as shown in this table can be found in Appendix~\ref{sec:UncertaintyDrag}. For most instances, the uncertainty in the velocity measurement was found to be the primary contributor to the drag coefficient uncertainty. In other cases, the uncertainty of the measured pressure loss across the vegetation was the primary contributor to the drag coefficient uncertainty.}.
 
 \begin{sidewaysfigure} [!]
 	\centering
@@ -575,17 +575,11 @@ The drag coefficient was calculated using a combination of Eqs.~(\ref{eq:WhiteFr
 \begin{equation}\label{eq:drag_coefficient}
   C_\mathrm{d} = \frac{-2 \, \Delta P}{\rho \, U^2 \, \ln \, W}
 \end{equation}
-where $\Delta P$ is the pressure drop across the vegetation sample, measured with a pressure transducer, $\rho$ is the air density, obtained via a temperature measurement and the ideal gas equation of state, $U$ is the average velocity of air through the wind tunnel, measured using an Annubar, and $W$ is the free area coefficient of the vegetation, measured using photography and image analysis. The uncertainty of the measured drag coefficient was estimated using the law of propagation of uncertainty:
+where $\Delta P$ is the pressure drop across the vegetation sample, measured with a pressure transducer, $\rho$ is the air density, obtained via pressure, temperature, and relative humidity measurements and the ideal gas equation of state, $U$ is the average velocity of air through the wind tunnel, measured using an Annubar, and $W$ is the free area coefficient of the vegetation, measured using photography and image analysis. The uncertainty of the measured drag coefficient was estimated using the law of propagation of uncertainty:
 \begin{equation}
 \label{eq:DragUncertainty}
 u_\mathrm{c} = \sqrt{{\left( \frac{\partial C_{\rm d}}{\partial \Delta P}\,u_{\scriptscriptstyle \Delta P} \right)}^2+{\left(\frac{\partial C_{\rm d}}{\partial \rho}\,u_{\scriptscriptstyle \rho}\right)}^2+{\left(\frac{\partial C_{\rm d}}{\partial U}\,u_{\scriptscriptstyle U}\right)}^2+{\left(\frac{\partial C_{\rm d}}{\partial W}\,u_{\scriptscriptstyle W}\right)}^2}
 \end{equation}
-
-
-\subsection{ Free-Area Coefficient }
-\label{ssec:FAACUncertainty}
-
-The uncertainty of the free-area coefficient was determined by measuring the projected areas of objects with known dimensions using the same photographic method described in Section~\ref{ssec:Free-Area Coef. Photo}. The standard deviation of the difference between the measured and true free-area coefficients was found to be $u_{\scriptscriptstyle W}=0.01$, which was treated as a Type B evaluation of standard uncertainty for all free-area coefficients of the vegetation samples.
 
 
 \subsection{Pressure}
@@ -608,7 +602,7 @@ where $T$ is the measured air temperature,$\phi$ is the relative humidity, $P$ a
 \begin{equation}
 P_{\mathrm{sat}} =6.1078\, \times \, 10^{\frac{7.5\,T}{T+237.3}}
 \end{equation}
-The Type A evaluation of uncertainty of air density was determined from the standard uncertainty of the absolute pressure, $s_{\scriptscriptstyle P}$, temperature, $s_{\scriptscriptstyle T}$, and relative humidity, $s_{\scriptscriptstyle \phi}$, readings of the testing facility. The standard uncertainty of the air density was determined through the law propogation of uncertainties with a coverage factor of two, assuming a level of confidence of approximately 95~\%:
+The Type A evaluation of uncertainty of air density was determined from the standard uncertainty of the absolute pressure, $s_{\scriptscriptstyle P}$, temperature, $s_{\scriptscriptstyle T}$, and relative humidity, $s_{\scriptscriptstyle \phi}$, readings of the testing facility. The standard uncertainty of the air density was determined through the law propagation of uncertainties with a coverage factor of two, assuming a level of confidence of approximately 95~\%:
 \begin{equation}
 \label{eq:Densityuncertainty}
 u_{\scriptscriptstyle \rho} = \sqrt{{\left( \frac{\partial \rho}{\partial P}\,s_{\scriptscriptstyle P} \right) }^2+{\left(\frac{\partial \rho}{\partial T}\,s_{\scriptscriptstyle T}\right)}^2+{\left(\frac{\partial \rho}{\partial \phi}\,s_{\scriptscriptstyle \phi}\right)}^2}
@@ -628,6 +622,12 @@ where $K$ is a flow coefficient and $\Delta P$ is the pressure difference measur
 \label{eq:Velocityuncertainty}
 u_{\scriptscriptstyle U} = \sqrt{{\left( \frac{\partial U}{\partial \Delta P}\,u_{\scriptscriptstyle \Delta P} \right) }^2+{\left(\frac{\partial U}{\partial \rho}\,u_{\scriptscriptstyle \rho}\right)}^2+{\left(\frac{\partial U}{\partial K}\,u_{\scriptscriptstyle K}\right)}^2}
 \end{equation}
+
+\subsection{ Free-Area Coefficient }
+\label{ssec:FAACUncertainty}
+
+The uncertainty of the free-area coefficient was determined by measuring the projected areas of objects with known dimensions using the same photographic method described in Section~\ref{ssec:Free-Area Coef. Photo}. The standard deviation of the difference between the measured and true free-area coefficients was found to be $u_{\scriptscriptstyle W}=0.01$, which was treated as a Type B evaluation of standard uncertainty for all free-area coefficients of the vegetation samples.
+
 
 \pagebreak
 
