@@ -243,9 +243,9 @@ Vegetation Canopy; Drag Coefficient; Wind Tunnel
 \section{Introduction}
 \label{sec:intro}
 
-The Fire Research Division of the National Institute of Standards and Technology (NIST) has developed several numerical models to predict the behavior of fires within buildings. One of the models, a computational fluid dynamics (CFD) code called the Fire Dynamics Simulator (FDS)~\cite{FDS_Tech_Guide}, has been extended to model fires in the wildland-urban interface (WUI). One crucial component of this type of modeling is proper treatment of wind-driven flow through vegetation. The objective of the experiments described in this report is to measure the drag coefficient of an empirical sub-model appropriate for CFD.
+The Fire Research Division of the National Institute of Standards and Technology (NIST) has developed several numerical models to predict the behavior of fires within buildings. One of the models, a computational fluid dynamics (CFD) code called the Fire Dynamics Simulator (FDS)~\cite{FDS_Tech_Guide}, has been extended to model fires in the wildland-urban interface (WUI). One crucial component of this type of modeling is proper treatment of wind-driven flow through vegetation. The objective of the experiments described in this report is to measure the drag coefficient of vegetation for an empirical sub-model appropriate for CFD.
 
-Measurements of this type have been performed by other researchers~\cite{Cao2012,Jalonen2014,Mayhead1973,Gillies2002,Ishikawa2006}, most of whom used wind tunnels of various sizes. In most cases, a single plant or small tree was positioned within the tunnel and the resistance force measured. However, such a measurement is not readily applicable to a CFD model which does not necessarily consider the tree as a whole but rather as a volume occupied by subgrid-scale objects that decrease momentum in the grid cells that they occupy. Some plants might be smaller than a characteristic grid cell, and some trees might be larger, but in either case, these objects are just momentum sinks within individual grid cells that require some drag coefficient that is appropriate to the local conditions.
+Measurements of this type have been performed by other researchers~\cite{Cao2012,Jalonen2014,Mayhead1973,Gillies2002,Ishikawa2006}, most of whom used wind tunnels of various sizes. In most cases, a single plant or small tree was positioned within the tunnel and the resistance force measured. However, such a measurement is not readily applicable to a CFD model which does not necessarily consider the tree as a whole but rather as a volume occupied by subgrid-scale objects that decrease the momentum of the gases flowing through. Some plants might be smaller than a characteristic grid cell, and some trees might be larger, but in either case, these objects are just momentum sinks within individual grid cells that require some drag coefficient that is appropriate to the local conditions.
 
 
 \section{Model Development}
@@ -318,9 +318,9 @@ The free-area coefficient was determined by placing each vegetation sample on a 
 	\label{fig:ImgAnaly}
 \end{figure}
 
-The images were processed using MATLAB's Image Processing Toolbox. Imported colored images were first converted into a grey scale and then a binary (black and white) image using a pre-set threshold level. The binary images were then cropped within the cardboard frame to eliminate non-vegetative substances and to evaluate the projected image of the vegetation exclusively. Once the projected image was obtained, a pixel count was conducted to determine the free-area coefficient of the vegetation, $W$. Once obtained, the free-area coefficient was used to calculate the absorption coefficient, $\kappa$, from Eq.~\ref{eq:WhiteFraction}.
+The images were processed using MATLAB's Image Processing Toolbox. Imported colored images were first converted into a grey scale and then a binary (black and white) image using a pre-set threshold level. The binary images were then cropped within the cardboard frame to eliminate non-vegetative substances and to evaluate the projected image of the vegetation exclusively. Once the projected image was obtained, a pixel count was conducted to determine the free-area coefficient of the vegetation, $W$. Once obtained, the free-area coefficient was used to calculate $\kappa$ from Eq.~\ref{eq:WhiteFraction}.
 
-A Type B, or epistemic, uncertainty of the free-area fraction and absorption coefficients was established using the same photography method and is described in further detail in Appendix~\ref{ssec:FAACUncertainty}.
+The uncertainty of the free-area coefficient, $W$, is discussed in Appendix~\ref{ssec:FAACUncertainty}.
 
 \subsection{Description of the Wind Tunnel}
 \label{ssec:headingscap}
@@ -348,7 +348,9 @@ An uncertainty analysis was conducted for the pressure and air density measureme
 \subsection{Determining the Volume of Vegetation via Water Displacement}
 \label{ssec:waterdisp}
 
-The volume of the vegetation was measured after a sample cut. The extracted vegetation was separated into branches and leaves and put into cloth mesh bags of known mass and volume, weighed\footnote{The mass was measured to estimate the water absorbed by the sample. The volume of water absorbed was subtracted from the volume of vegetation measured from the beaker.}, and submerged in a bucket. The displaced water flowed through a spout and into a beaker (Fig.~\ref{fig:wdt}). The measurement was repeated three times for each sample. The solid fraction, $\beta$, was calculated by dividing the average sample volume by the volume it occupied (0.5~\si{m} $\times$ 0.5~\si{m} $\times$ 0.5~\si{m} = 0.125~\si{m^{3}}). A combined Type A, or aleatoric, and Type B uncertainty was established for solid fraction parameter and is described in Appendix~\ref{sec:UncertaintySolidFrac}.
+The volume of the vegetation was measured after a sample cut. The extracted vegetation was separated into branches and leaves and put into cloth mesh bags of known mass and volume, weighed\footnote{The mass was measured to estimate the water absorbed by the sample. The volume of water absorbed was subtracted from the volume of vegetation measured from the beaker.}, and submerged in a bucket. The displaced water flowed through a spout and into a beaker (Fig.~\ref{fig:wdt}). The measurement was repeated three times for each sample. The solid fraction, $\beta$, was calculated by dividing the average sample volume by the volume it occupied (0.5~\si{m} $\times$ 0.5~\si{m} $\times$ 0.5~\si{m} = 0.125~\si{m^{3}}). 
+
+The combined standard uncertainty of the measured solid sample volume combines, via quadrature, the Type A standard uncertainty, taken as the standard deviation of the repeated measurements, and the Type~B standard uncertainty, taken as the standard deviation of the assumed uniform distribution that characterizes the uncertainty in the reading of the graduated cylinder, $5/\sqrt{12}$~mL, where the cylinder has 5~mL grading divisions.
 
 \begin{figure} [!]
 	\centering 	\includegraphics[height=0.95\textheight,keepaspectratio]{Picture7.jpg}
@@ -363,16 +365,16 @@ The volume of the vegetation was measured after a sample cut. The extracted vege
 \section{Results}
 \label{sec:results}
 
-The key results of this work are the relationship between the absorption coefficient and solid fraction and more importantly the drag coefficient derived from the measurements made in the Image Analysis and Wind Tunnel Experiments.
+The key results of this work are the relationship between the ``absorption coefficient,'' $\kappa$, and the solid fraction, $\beta$, and more importantly the drag coefficient derived from the wind tunnel measurements.
 
 \subsection{Relationship between the absorption coefficient $\kappa$ and solid fraction $\beta$ }
 
-Figure~\ref{fig:betavkappa} presents the relationship between the absorption coefficient and solid fraction of all sample configurations. The symbols indicate the measured values while the dotted lines represent a linear regression fit. Each line represents a particular type of vegetation that has been pruned, reducing both its volume fraction its projected free-area coefficient, $W$, and corresponding the absorption coefficient, $\kappa$. There ought to be a linear relationship between $\kappa$ and $\beta$ if the shape factor, $C_{\rm s}$, and surface to volume ratio, $\sigma$ are constant, as shown in (Eq.~\ref{eq:Kappa}). However, this is not the case when the vegetative components are not uniform in size. Take, for example, the Robin Red Holly data shown in Fig.~\ref{fig:betavkappa}. As the solid fraction decreases, the absorption coefficient should approach zero, as demonstrated by most samples. As the leaves of the Robin Red Holly were pruned, its absorption coefficient, $\kappa$, decreased significantly even though its volume fraction did not, owing to the fact the ratio of branch to leaf volume of the Robin Red Holly is substantially higher than the other plant species, as shown in Table~\ref{tab:RatioTable},  As a result, the free-surface area, $W$, decreases from the removal of leaves, thus reducing the absorption coefficient, while still maintaining a relatively consistent solid fraction due to the significant volume contribution of the branches.
+Figure~\ref{fig:betavkappa} presents the relationship between the ``absorption coefficient,'' $\kappa$, and the solid fraction, $\beta$, for all sample configurations. The symbols indicate the measured values while the dotted lines represent a linear regression fit. Each line represents a particular type of vegetation that has been pruned, reducing both the volume fraction, $\beta$, the projected free-area coefficient, $W$, and the corresponding value of $\kappa$. There ought to be a linear relationship between $\kappa$ and $\beta$ if the shape factor, $C_{\rm s}$, and surface to volume ratio, $\sigma$ are constant, as shown in Eq.~(\ref{eq:Kappa}). However, this is not the case when the vegetative components are not uniform in size. Take, for example, the Robin Red Holly data shown in Fig.~\ref{fig:betavkappa}. As $\beta$ decreases, $\kappa$ should approach zero, as demonstrated by most samples. As the leaves of the Robin Red Holly were pruned, $\kappa$ decreased significantly even though its volume fraction did not, owing to the fact the ratio of branch to leaf volume of the Robin Red Holly is substantially higher than the other plant species, as shown in Table~\ref{tab:RatioTable}.  As a result, the free-surface area, $W$, decreases from the removal of leaves, thus reducing $\kappa$, while still maintaining a relatively consistent solid fraction due to the significant volume contribution of the branches.
 
 \begin{figure}[!h]
 	\centering 	
     \includegraphics[width=1\linewidth]{Picture12.jpg}
-	\caption[Comparison of absorption coefficient, $\kappa$, and solid fraction, $\beta$]{Calculated absorption coefficients ($\kappa$) of vegetation sample configuration plotted against their corresponding solid fractions ($\beta$)}
+	\caption[Comparison of ``absorption coefficient,'' $\kappa$, and solid fraction, $\beta$]{Calculated ``absorption coefficient'' ($\kappa$) of vegetation sample configuration plotted against the corresponding solid fractions ($\beta$)}
 	\label{fig:betavkappa}
 \end{figure}
 
@@ -383,24 +385,24 @@ Figure~\ref{fig:betavkappa} presents the relationship between the absorption coe
 \label{tab:RatioTable}
 \centering
 	
-	\begin{tabular}{cccccc}	
+	\begin{tabular*}{\textwidth}{lcclcc}	
 			\hline
-\rule{0pt}{14pt}\textbf{Sample}	&\textbf{Cut}	& $\textfrac{\textbf{Branch Volume}}{\textbf{Leaf Volume}}$	&\textbf{Sample}			&	\textbf{Cut}	& $\textfrac{\textbf{Branch Volume}}{\textbf{Leaf Volume}}$	\\
+\rule{0pt}{14pt}\textbf{Sample}	&\textbf{Cut}	& {\bf Branch/Leaf Volume}  \hspace{.2in}  &\textbf{Sample}			&	\textbf{Cut}	& {\bf Branch/Leaf Volume}	\\
 \hline
 \\[0.01cm]
-Bakers Blue Spruce			&	0		&        1.1							&Gold Rider Leyland Cypress	&	0		&	1.5						\\
+Spruce		    	&	0		&   1.1			        		& Cypress       	&	0		&	1.5						\\
 					&	1		& 	1.3							&					&	1		&	2.2						\\
 					&	2		& 	1.5							&					&	2		&	3.0						\\
 					&	3		&	N/A							&					&	3		&  	N/A 						\\
 					&			&								&					&			&       							\\
-Evergreen Distylium			&	0		&	1.0							&Robin Red Holly			&	0		&	11						\\
+Distylium			&	0		&	1.0							& Holly	     		&	0		&	11						\\
 					&	1		&	1.4							&					&	1		&	16						\\
 					&	2		&	3.3							&					&	2		&	47						\\
 					&			&								&					&	3		&        N/A 						\\
 \\[0.005cm]
 \hline														
 
-\end{tabular}
+\end{tabular*}
 \end{table}
 
 \pagebreak
@@ -425,7 +427,7 @@ Figure~\ref{fig:DPvU(Overall)} displays the relationship between the freestream 
 	\label{fig:DPoveraf(Overall)}
 \end{sidewaysfigure}
 
-The distribution of all sample configurations' drag coefficient is shown in Fig.~\ref{fig:Histogram}. A Kolmogorov-Smirnov test (K-S test) was implemented to test the normality of the drag coefficient data. The K-S test determined that the drag coefficients of all sample configurations do not significantly vary ($D(68)=\,0.09$) from normality\footnote{The $D$ refers to the Kolmogorov-Smirnov test statistic, the 68 in brackets is the degrees of freedom (df), and the 0.09 is the actual K-S test statistic.}. The normal distribution of the data is further supported by the ``bell curve'' fitting displayed in  Fig.~\ref{fig:Histogram}. The average drag coefficient of all sample configurations was determined to be 2.8 with a standard deviation of 0.6.
+The distribution of the measured drag coefficients for all sample configurations is shown in Fig.~\ref{fig:Histogram}. A Kolmogorov-Smirnov test (K-S test) was implemented to test the normality of the drag coefficient data. The K-S test determined that the drag coefficients of all sample configurations do not significantly vary ($D(68)=\,0.09$) from normality\footnote{The $D$ refers to the Kolmogorov-Smirnov test statistic, the 68 in brackets is the degrees of freedom (df), and the 0.09 is the actual K-S test statistic.}. The normal distribution of the data is further supported by the ``bell curve'' fitting displayed in  Fig.~\ref{fig:Histogram}. The average drag coefficient of all sample configurations was determined to be 2.8 with a standard deviation of 0.6.
 
 \begin{figure}[!h]
 	%\centering 	
@@ -495,12 +497,15 @@ To determine if the average drag coefficient depends on the type of vegetation a
 
 In comparison to previous work~\cite{Cao2012,Jalonen2014,Mayhead1973,Gillies2002,Ishikawa2006}, the magnitude of the measured drag coefficients in this study is relatively large. As discussed in Section~\ref{sec:intro}, most previous studies have measured the wind resistance of a single plant or tree within a larger wind tunnel while this work considered a relatively homogenous distribution of vegetation within a tunnel. The interpretation of ``freestream'' velocity, shape factor, cross-sectional area, and so on, are often different in these studies, making it difficult to compare drag coefficients from one study to another. Within the field, there is no single definition of drag coefficient in regard to vegetation.
 
-As a way to verify the accuracy of our wind tunnel measurements and the validity of our drag coefficient derivation, we considered a bank of regularly-spaced, staggered, vertical cylinders within our wind tunnel, using both actual steel rods and empirical results from Idelchick~\cite{Idelchick1994}. For each of the measured vegetation samples, a comparable configuration of vertical tubes was derived such that the volume fraction, $\beta$, absorption coefficient, $\kappa$, and characteristic diameter, $D$, match as closely as possible (see Table~\ref{tab:tube_parameters}). The characteristic diameter was calculated from Eq.~\ref{eq:Kappa} using the measured $\beta$ and $\kappa$ values and assuming a cylindrical shape factor ($C_{\mathrm{s}} = 1/\pi$). To account for the repeated tube formation for each row, the $\kappa$ value of the tube bank was determined from the distance between rows, $L'$, and using Eq.~\ref{eq:WhiteFraction}. The expected pressure drop through the tube bank was either measured directly in the wind tunnel or taken from Idelchick (Eq.~\ref{eq:IdelchickTB}), and the corresponding drag coefficient was determined from Eq.~\ref{eq:Pressure}.
+As a way to verify the accuracy of our wind tunnel measurements and the validity of our drag coefficient derivation, we considered a bank of regularly-spaced, staggered, vertical cylinders within our wind tunnel, using both actual steel rods and empirical results from Idelchik~\cite{Idelchik1994}. For each of the measured vegetation samples, a comparable configuration of vertical tubes was chosen such that the volume fraction, $\beta$, ``absorption coefficient,'' $\kappa$, and characteristic diameter, $D$, match as closely as possible (see Table~\ref{tab:tube_parameters}). The characteristic diameter was calculated from Eq.~\ref{eq:Kappa} using the measured $\beta$ and $\kappa$ values and assuming a cylindrical shape factor ($C_{\mathrm{s}} = 1/\pi$). To account for the repeated tube formation for each row, the $\kappa$ value of the tube bank was determined from the distance between rows, $L'$, and Eq.~\ref{eq:WhiteFraction}. According to Idelchik, the expected pressure drop through the tube bank is:
 \begin{equation}
 \label{eq:IdelchickTB}
-\Delta P = \frac{\rho}{2}\,\frac{A\, \mathrm{Re}^{-0.27}}{W^{2}}\, U^2
+\Delta P = \frac{\rho}{2}\, \zeta  \left( \frac{U}{W} \right)^2  \quad ; \quad \zeta = A \, \mathrm{Re}^{-0.27} (N_\mathrm{r}+1) \quad ; \quad  \mathrm{Re} = \frac{(U/W) \, D \, \rho}{\mu_\mathrm{air}}
 \end{equation}
-In Eq.~\ref{eq:IdelchickTB}, $A$ is defined as a geometric parameter determined from the tube bank configuration and Re is the Reynolds number which must be greater than 3000 for the empirical model to apply. 
+where $A$ is a geometric parameter determined from the tube bank configuration, $N_\mathrm{r}$ is the number of rows of tubes, $U/W$ is the average velocity of air flowing through the tubes, and Re is the Reynolds number which must be greater than 3000 for the empirical model to apply. Setting the pressure drop, $\Delta P$, in Eq.~(\ref{eq:IdelchickTB}) equal to that in Eq.~(\ref{eq:Pressure}) leads to an equivalent drag coefficient for the tube bank:
+\begin{equation}
+   C_\mathrm{d} = \frac{\zeta/W^2}{\kappa \, L}
+\end{equation}
 
 \begin{table}[!]
     \centering
@@ -511,15 +516,15 @@ In Eq.~\ref{eq:IdelchickTB}, $A$ is defined as a geometric parameter determined 
                                  & \multicolumn{2}{|c|}{$\beta$ (\%)} & \multicolumn{2}{|c|}{$\kappa$ (m$^{-1}$)} & \multicolumn{2}{|c|}{$D$ (mm)} &                             &                         &         \\ \cline{2-7}
     \raisebox{1.5ex}[0pt]{Pos.}  & Veg.             & Tubes      & Veg.                 & Tubes              & Veg.              & Tubes      & \raisebox{1.5ex}[0pt]{Rows} & \raisebox{1.5ex}[0pt]{$\textfrac{\rm{Tubes}}{\rm{Row}}$} &\raisebox{1.5ex}[0pt]{$L'$ (cm)}\\ \hline \hline
     \multicolumn{10}{|c|}{Bakers Blue Spruce, Cut 1}                                                                                                                                                    \\ \hline
-    A                            & 1.8            & 1.8      & 2.4                  & 2.4                & 9.4               & 10.6        & 5                           & 10           &          1.0           \\ \hline
-    B                            & 1.8            &1.8     & 2.6                & 2.6               &8.6               & 9.5       & 7                           & 9                      &         0.7  \\ \hline
-    C                            & 1.8            & 1.7      & 2.3                  & 2.3                & 9.7               & 11.2       &4                            & 11            &      1.3             \\ \hline
-    D                            & 1.8           & 1.8      & 2.5                 & 2.5               & 8.9             & 10.4       & 4                           & 13                 &  1.3              \\ \hline
+    A                            & 1.8            & 1.8      & 2.4                  & 2.4                & 9.4               & 10.6        & 5                           & 10           &          10.0           \\ \hline
+    B                            & 1.8            &1.8     & 2.6                & 2.6               &8.6               & 9.5       & 7                           & 9                      &         7.1  \\ \hline
+    C                            & 1.8            & 1.7      & 2.3                  & 2.3                & 9.7               & 11.2       &4                            & 11            &      12.5             \\ \hline
+    D                            & 1.8           & 1.8      & 2.5                 & 2.5               & 8.9             & 10.4       & 4                           & 13                 &  12.5             \\ \hline
         \multicolumn{10}{|c|}{Gold Rider Leyland Cypress, Cut 1}                                                                                                                                                    \\ \hline
-    A                            &1.4           & 1.4      & 2.1                  & 2.2                & 8.3              & 8.9       & 7                           & 8                 &   0.7         \\ \hline
-    B                            & 1.4          & 1.4      & 1.9                  & 2.0               & 9.2               & 10.7        & 3                           & 13            &   1.7                  \\ \hline
-    C                            & 1.4           & 1.4     & 2.2                  & 2.2                & 8.1               & 9.3       & 4                          & 13               &   1.3       \\ \hline
-    D                            & 1.4            & 1.4      & 1.9                  & 1.9                & 9.4               & 10.2       & 6                          & 7              &   0.8             \\ \hline
+    A                            &1.4           & 1.4      & 2.1                  & 2.2                & 8.3              & 8.9       & 7                           & 8                 &   7.1         \\ \hline
+    B                            & 1.4          & 1.4      & 1.9                  & 2.0               & 9.2               & 10.7        & 3                           & 13            &   16.7                 \\ \hline
+    C                            & 1.4           & 1.4     & 2.2                  & 2.2                & 8.1               & 9.3       & 4                          & 13               &   12.5       \\ \hline
+    D                            & 1.4            & 1.4      & 1.9                  & 1.9                & 9.4               & 10.2       & 6                          & 7              &   8.3             \\ \hline
     \end{tabular}
 \end{table}
 
@@ -530,7 +535,7 @@ In Eq.~\ref{eq:IdelchickTB}, $A$ is defined as a geometric parameter determined 
 	\label{fig:TBGR}
 \end{figure}
 
-Figure~\ref{fig:TBGR} compares the drag coefficients from the Gold Rider Leyland Cypress and Bakers Blue Spruce with their tube bank equivalents. While the match is not expected to be perfect given the difference in skin fraction, shape, and so on, the drag coefficients of each configuration is comparable.
+Figure~\ref{fig:TBGR} compares the drag coefficients from the Gold Rider Leyland Cypress and Bakers Blue Spruce with their tube bank equivalents. While the match is not expected to be perfect given the difference in skin fraction, shape, and so on, the drag coefficient of each configuration is comparable.
 \pagebreak
 
 \section{Conclusion}
@@ -551,7 +556,7 @@ This report documents a series of experiments implemented to determine the absor
 \pagebreak
 \section*{References}
 \addcontentsline{toc}{section}{References}
-\bibliographystyle{techpubs}
+\bibliographystyle{unsrt}
 \bibliography{References}
 \pagebreak
 
@@ -575,17 +580,18 @@ The drag coefficient was calculated using a combination of Eqs.~(\ref{eq:WhiteFr
 \begin{equation}\label{eq:drag_coefficient}
   C_\mathrm{d} = \frac{-2 \, \Delta P}{\rho \, U^2 \, \ln \, W}
 \end{equation}
-where $\Delta P$ is the pressure drop across the vegetation sample, measured with a pressure transducer, $\rho$ is the air density, obtained via pressure, temperature, and relative humidity measurements and the ideal gas equation of state, $U$ is the average velocity of air through the wind tunnel, measured using an Annubar, and $W$ is the free area coefficient of the vegetation, measured using photography and image analysis. The uncertainty of the measured drag coefficient was estimated using the law of propagation of uncertainty:
+where $\Delta P$ is the pressure drop across the vegetation sample, measured with a pressure transducer, $\rho$ is the air density, obtained via pressure, temperature, and relative humidity measurements and the ideal gas law, $U$ is the average velocity of air through the wind tunnel, measured using an Annubar, and $W$ is the free area coefficient of the vegetation, measured using photography and image analysis. The uncertainty of the measured drag coefficient was estimated using the law of propagation of uncertainty:
 \begin{equation}
 \label{eq:DragUncertainty}
 u_\mathrm{c} = \sqrt{{\left( \frac{\partial C_{\rm d}}{\partial \Delta P}\,u_{\scriptscriptstyle \Delta P} \right)}^2+{\left(\frac{\partial C_{\rm d}}{\partial \rho}\,u_{\scriptscriptstyle \rho}\right)}^2+{\left(\frac{\partial C_{\rm d}}{\partial U}\,u_{\scriptscriptstyle U}\right)}^2+{\left(\frac{\partial C_{\rm d}}{\partial W}\,u_{\scriptscriptstyle W}\right)}^2}
 \end{equation}
+A coverage factor of 2 is applied to the combined uncertainty to produce a 95~\% confidence interval.
 
 
 \subsection{Pressure}
 \label{ssec:PressUncertainty}
 
-Two pressure transducers were used in this study. Transducer 1 measured the differential pressure across the vegetation while Transducer 2 measured the differential pressure across the Annubar. The Type A evaluation of standard uncertainty of the pressure difference, $\Delta P$, was taken as the standard deviation of the measurements sampled at 90~\si{Hz} for a 30~\si{s} period while maintaining a constant fan speed, $s_{\scriptscriptstyle \Delta P}$. The Type B evaluation of standard uncertainty was determined from the calibration error sources of the pressure transducers and was found to be $u_{\rm \scriptscriptstyle cal}=1.4$~Pa and $u_{\rm \scriptscriptstyle cal}=1.5$~Pa for Transducers 1 and 2, respectively. The combined uncertainty was found via quadrature with a coverage factor of two, assuming a level of confidence of approximately 95~\%:
+Two pressure transducers were used in this study. Transducer 1 measured the differential pressure across the vegetation while Transducer 2 measured the differential pressure across the Annubar. The Type A evaluation of standard uncertainty of the pressure difference, $\Delta P$, was taken as the standard deviation, $s_{\scriptscriptstyle \Delta P}$, of the measurements sampled at 90~\si{Hz} for 30~\si{s}. The Type B evaluation of standard uncertainty was determined from the calibration error sources of the pressure transducers and was found to be $u_{\rm \scriptscriptstyle cal}=1.4$~Pa and $u_{\rm \scriptscriptstyle cal}=1.5$~Pa for Transducers 1 and 2, respectively. The combined uncertainty was found via quadrature:
 \begin{equation}
 \label{eq:pressureuncertainty}
 u_{\scriptscriptstyle \Delta P} = \sqrt{ u_{\rm \scriptscriptstyle cal}^2 + s_{\scriptscriptstyle \Delta P}^2}
@@ -602,7 +608,7 @@ where $T$ is the measured air temperature,$\phi$ is the relative humidity, $P$ a
 \begin{equation}
 P_{\mathrm{sat}} =6.1078\, \times \, 10^{\frac{7.5\,T}{T+237.3}}
 \end{equation}
-The Type A evaluation of uncertainty of air density was determined from the standard uncertainty of the absolute pressure, $s_{\scriptscriptstyle P}$, temperature, $s_{\scriptscriptstyle T}$, and relative humidity, $s_{\scriptscriptstyle \phi}$, readings of the testing facility. The standard uncertainty of the air density was determined through the law propagation of uncertainties with a coverage factor of two, assuming a level of confidence of approximately 95~\%:
+The Type A evaluation of uncertainty of air density was determined from the standard uncertainty of the absolute pressure, $s_{\scriptscriptstyle P}$, temperature, $s_{\scriptscriptstyle T}$, and relative humidity, $s_{\scriptscriptstyle \phi}$, readings of the testing facility. The standard uncertainty of the air density was determined through the law propagation of uncertainties:
 \begin{equation}
 \label{eq:Densityuncertainty}
 u_{\scriptscriptstyle \rho} = \sqrt{{\left( \frac{\partial \rho}{\partial P}\,s_{\scriptscriptstyle P} \right) }^2+{\left(\frac{\partial \rho}{\partial T}\,s_{\scriptscriptstyle T}\right)}^2+{\left(\frac{\partial \rho}{\partial \phi}\,s_{\scriptscriptstyle \phi}\right)}^2}
@@ -617,7 +623,7 @@ The average air velocity through the wind tunnel, $U$, was measured using an Ann
 \label{eq:Velocity}
 U = K \, \sqrt{\frac{2 \, \Delta P}{\rho}}
 \end{equation}
-where $K$ is a flow coefficient and $\Delta P$ is the pressure difference measured by Transducer~2 discussed above. The Type B evaluation of standard uncertainty of the flow coefficient was assumed to be 5~\% of the reading~\footnote{A 485 Calibrated Annubar is reported to have an accuracy of 0.5~\% in circular ducts as reported by \cite{Annubar}. However, since an Annubar was used in a square duct in these experiments, the uncertainty of the flow coefficient was adjusted to 5~\% as recommended by personal recommendation from the manufacturer.}. The standard uncertainty of the velocity was determined through the law of propagation of uncertainties:
+where $K$ is a flow coefficient and $\Delta P$ is the pressure difference measured by Transducer~2 discussed above. The Type B evaluation of standard uncertainty of the flow coefficient was assumed to be 5~\% of the reading~\footnote{A 485 Calibrated Annubar is reported to have an accuracy of 0.5~\% in circular ducts as reported by \cite{Annubar}. However, since an Annubar was used in a square duct in these experiments, the uncertainty of the flow coefficient was adjusted to 5~\% after contacting the manufacturer.}. The standard uncertainty of the velocity was determined through the law of propagation of uncertainties:
 \begin{equation}
 \label{eq:Velocityuncertainty}
 u_{\scriptscriptstyle U} = \sqrt{{\left( \frac{\partial U}{\partial \Delta P}\,u_{\scriptscriptstyle \Delta P} \right) }^2+{\left(\frac{\partial U}{\partial \rho}\,u_{\scriptscriptstyle \rho}\right)}^2+{\left(\frac{\partial U}{\partial K}\,u_{\scriptscriptstyle K}\right)}^2}
@@ -629,17 +635,6 @@ u_{\scriptscriptstyle U} = \sqrt{{\left( \frac{\partial U}{\partial \Delta P}\,u
 The uncertainty of the free-area coefficient was determined by measuring the projected areas of objects with known dimensions using the same photographic method described in Section~\ref{ssec:Free-Area Coef. Photo}. The standard deviation of the difference between the measured and true free-area coefficients was found to be $u_{\scriptscriptstyle W}=0.01$, which was treated as a Type B evaluation of standard uncertainty for all free-area coefficients of the vegetation samples.
 
 
-\pagebreak
-
-\section{Uncertainty Analysis of the Solid Fraction} \label{sec:UncertaintySolidFrac}
-\addcontentsline{toc}{section}{Appendix B: Uncertainty Analysis of the Solid Fraction}
-
-The solid fraction of the vegetation, $\beta$, was determined using the water displacement testing described in Section~\ref{ssec:waterdisp}. The Type A evaluation of standard uncertainty was taken as the standard deviation of the repeated solid fraction measurements, $s_{\scriptscriptstyle \beta}$. The Type B evaluation of the standard uncertainty was determined as the resolution of the beaker (5 ml) and load cell (0.005 kg) used to measure the volume and mass, respectively. The combined uncertainty was calculated via quadrature with a coverage factor of two, assuming a level of confidence of approximately 95~\%:
-
-\begin{equation}
-\label{eq:betauncertainty}
-u_{\beta} = \sqrt{{(u_{\rm{B\,Res.}})^2+(u_{\rm{L.C.,\,Res.}})^2+(s_{\beta})}^2}
-\end{equation}
 
 
 \end{document}
