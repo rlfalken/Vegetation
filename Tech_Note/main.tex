@@ -83,7 +83,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\pubnumber}{XXXX}
 \newcommand{\DOI}{https://doi.org/10.6028/NIST.TN.XXXX}
-\newcommand{\monthyear}{September 2018}
+\newcommand{\monthyear}{October 2018}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   	BEGIN DOCUMENT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -243,7 +243,7 @@ Vegetation Canopy; Drag Coefficient; Wind Tunnel
 \section{Introduction}
 \label{sec:intro}
 
-The Fire Research Division of the National Institute of Standards and Technology (NIST) has developed several numerical models to predict the behavior of fires within buildings. One of the models, a computational fluid dynamics (CFD) code called the Fire Dynamics Simulator (FDS)~\cite{FDS_Tech_Guide}, has been extended to model fires in the wildland-urban interface (WUI). One crucial component of this type of modeling is proper treatment of wind-driven flow through vegetation. The objective of the experiments described in this report is to measure the drag coefficient of vegetation for an empirical sub-model appropriate for CFD.
+The Fire Research Division of the National Institute of Standards and Technology (NIST) has developed several numerical models to predict the behavior of fires within buildings. One of the models, a computational fluid dynamics (CFD) code called the Fire Dynamics Simulator (FDS)~\cite{FDS_Tech_Guide}, has been extended to model fires in the wildland-urban interface (WUI). One crucial component of this type of modeling is the proper treatment of wind-driven flow through vegetation. The objective of the experiments described in this report is to measure the drag coefficient of vegetation for an empirical sub-model appropriate for CFD.
 
 Measurements of this type have been performed by other researchers~\cite{Cao2012,Jalonen2014,Mayhead1973,Gillies2002,Ishikawa2006}, most of whom used wind tunnels of various sizes. In most cases, a single plant or small tree was positioned within the tunnel and the resistance force measured. However, such a measurement is not readily applicable to a CFD model which does not necessarily consider the tree as a whole but rather as a volume occupied by subgrid-scale objects that decrease the momentum of the gases flowing through. Some plants might be smaller than a characteristic grid cell, and some trees might be larger, but in either case, these objects are just momentum sinks within individual grid cells that require some drag coefficient that is appropriate to the local conditions.
 
@@ -341,9 +341,9 @@ Pressure loss measurements were obtained in a wind tunnel test section with a cr
 %	\label{fig:WindtunnelSch}
 %\end{figure}
 
-Once a set of measurements were taken at all fan speeds, the wind tunnel was shut off for approximately 5~\si{min}, and then the measurements were repeated. All measurements were repeated three times for each vegetation configuration. The variance homogeneity of the replicate measurements was tested using Hartley's F\textsubscript{max} test. If it was found that the data sets were homogenous, then the measurements were averaged.
+Once a set of measurements was taken at all fan speeds, the wind tunnel was shut off for approximately 5~\si{min}, and then the measurements were repeated. All measurements were repeated three times for each vegetation configuration. The variance homogeneity of the replicate measurements was tested using Hartley's F\textsubscript{max} test. If it was found that the data sets were homogenous, then the measurements were averaged.
 
-An uncertainty analysis was conducted for the pressure and air density measurements and the subsequently determined velocities and drag coefficients.The characterization of the uncertainty for each parameter is provided in Appendix~\ref{sec:UncertaintyDrag}.
+An uncertainty analysis was conducted for the pressure and air density measurements and the subsequently determined velocities and drag coefficients. The characterization of the uncertainty for each parameter is provided in Appendix~\ref{sec:UncertaintyDrag}.
 
 \subsection{Determining the Volume of Vegetation via Water Displacement}
 \label{ssec:waterdisp}
@@ -387,18 +387,18 @@ Figure~\ref{fig:betavkappa} presents the relationship between the ``absorption c
 	
 	\begin{tabular*}{\textwidth}{lcclcc}	
 			\hline
-\rule{0pt}{14pt}\textbf{Sample}	&\textbf{Cut}	& {\bf Branch/Leaf Volume}  \hspace{.2in}  &\textbf{Sample}			&	\textbf{Cut}	& {\bf Branch/Leaf Volume}	\\
+\rule{0pt}{14pt}\textbf{Sample}	&\textbf{$\beta$\,(\%)}	& {\bf Branch/Leaf Volume}  \hspace{.2in}  		&\textbf{Sample}		&	\textbf{$\beta$\,(\%)}	& {\bf Branch/Leaf Volume}	\\
 \hline
 \\[0.01cm]
-Spruce		    	&	0		&   1.1			        		& Cypress       	&	0		&	1.5						\\
-					&	1		& 	1.3							&					&	1		&	2.2						\\
-					&	2		& 	1.5							&					&	2		&	3.0						\\
-					&	3		&	N/A							&					&	3		&  	N/A 						\\
-					&			&								&					&			&       							\\
-Distylium			&	0		&	1.0							& Holly	     		&	0		&	11						\\
-					&	1		&	1.4							&					&	1		&	16						\\
-					&	2		&	3.3							&					&	2		&	47						\\
-					&			&								&					&	3		&        N/A 						\\
+Blue Spruce		    		&	1.9			& 	1.1			        				& Cypress       		&	1.7		&	1.5						\\
+					&	1.8			& 	1.3							&				&	1.4		&	2.2						\\
+					&	1.2			& 	1.5							&				&	1.2		&	3.0						\\
+					&	0.7			&	N/A							&				&	0.9		&  	N/A 						\\
+					&				&								&				&			&       							\\
+Distylium				&	0.5			&	1.0							& Red Holly	     		&	2.7		&	11						\\
+					&	0.4			&	1.4							&				&	2.3		&	16						\\
+					&	0.3			&	3.3							&				&	2.2		&	47						\\
+					&				&								&				&	2.1		&        N/A 						\\
 \\[0.005cm]
 \hline														
 
@@ -411,7 +411,7 @@ Distylium			&	0		&	1.0							& Holly	     		&	0		&	11						\\
 \subsection{Vegetation Canopy Drag Coefficients}
 \label{ssec:headingscap}
 
-Figure~\ref{fig:DPvU(Overall)} displays the relationship between the freestream velocity and the pressure drop for each sample configuration. The results demonstrate the expected quadratic relationship. Replotting the data as shown in Fig.~\ref{fig:DPoveraf(Overall)} yields the drag coefficient for each sample configuration as determined by calculating the slope of each line of data points. No linear regression fitting was observed to have a coefficient of determination value less than 0.98, indicating a close representation of the fitted regression line to the measured data. A summary of all 68 calculated drag coefficients and their respective uncertainties are presented in Table \ref{tab:SumTable}\footnote{The procedure for determining the drag coefficient uncertainty as shown in this table can be found in Appendix~\ref{sec:UncertaintyDrag}. For most instances, the uncertainty in the velocity measurement was found to be the primary contributor to the drag coefficient uncertainty. In other cases, the uncertainty of the measured pressure loss across the vegetation was the primary contributor to the drag coefficient uncertainty.}.
+Figure~\ref{fig:DPvU(Overall)} displays the relationship between the freestream velocity and the pressure drop for each sample configuration. The results demonstrate the expected quadratic relationship. Replotting the data as shown in Fig.~\ref{fig:DPoveraf(Overall)} yields the drag coefficient for each sample configuration as determined by calculating the slope of each line of data points. No linear regression fitting was observed to have a coefficient of determination less than 0.98, indicating a close representation of the fitted regression line to the measured data. A summary of all 68 calculated drag coefficients and their respective uncertainties are presented in Table \ref{tab:SumTable}\footnote{The procedure for determining the drag coefficient uncertainty as shown in this table can be found in Appendix~\ref{sec:UncertaintyDrag}. For most instances, the uncertainty in the velocity measurement was found to be the primary contributor to the drag coefficient uncertainty. In other cases, the uncertainty of the measured pressure loss across the vegetation was the primary contributor to the drag coefficient uncertainty.}.
 
 \begin{sidewaysfigure} [!]
 	\centering
@@ -427,77 +427,79 @@ Figure~\ref{fig:DPvU(Overall)} displays the relationship between the freestream 
 	\label{fig:DPoveraf(Overall)}
 \end{sidewaysfigure}
 
-The distribution of the measured drag coefficients for all sample configurations is shown in Fig.~\ref{fig:Histogram}. A Kolmogorov-Smirnov test (K-S test) was implemented to test the normality of the drag coefficient data. The K-S test determined that the drag coefficients of all sample configurations do not significantly vary ($D(68)=\,0.09$) from normality\footnote{The $D$ refers to the Kolmogorov-Smirnov test statistic, the 68 in brackets is the degrees of freedom (df), and the 0.09 is the actual K-S test statistic.}. The normal distribution of the data is further supported by the ``bell curve'' fitting displayed in  Fig.~\ref{fig:Histogram}. The average drag coefficient of all sample configurations was determined to be 2.8 with a standard deviation of 0.6.
+The distribution of the measured drag coefficients for all sample configurations is shown in Fig.~\ref{fig:Histogram}. The collection of sample configurations is divided into two groups based on leaf shape (i.e., broad and narrow). The broad leaves group included the Evergreen Distylium, a Kimberly Queen Fern, and a Robin Red Holly while the narrow leaves group was comprised of the remaining species. The average drag coefficient of all sample configurations was determined to be 2.8 with an expanded uncertainty of 0.4. 
 
-\begin{figure}[!h]
+\begin{figure}[!]
 	%\centering 	
 \includegraphics[width=\textwidth,keepaspectratio]{Picture11.jpg}
-	\caption[Distribution of drag coefficients]{Distribution of vegetation samples drag coefficients with noted mean and standard deviation values}
+	\caption[Distribution of drag coefficients for all samples (top), samples with broad leaves (bottom left), samples with narrow leaves (bottom right)]{Distribution of vegetation samples drag coefficients with noted mean and standard deviation values}
 	\label{fig:Histogram}
 \end{figure}
 
+To determine if the average drag coefficient depends on the type of vegetation a one-way analysis of variance (ANOVA) was implemented on the drag coefficients of the different vegetation samples. The analysis yielded a significant variation ($F(5,62)=4.88$, $p=7.97 \times 10^{-4}$) among the species\footnote{The $F$ refers to the statistic obtained from the F-test conducted in the ANOVA, the 5 and 62 in brackets represent the degrees of freedom, and the 4.88 is the actual F statistic derived from the ANOVA. The $p$ refers to the significance level determined from the F statistic and the $7.97 \times 10^{-4}$ is the actual p-value which was determined to be less than the chosen confidence level of 0.05, indicating a significant difference between the mean drag coefficients of the samples.}. A Tukey test was subsequently applied to determine if the species-specific average drag coefficients were significantly different from each other. The results showed one significant difference between the species' average drag coefficients: the Robin Red Holly and Gold-Rider Leyland Cypress. Despite the significant difference, the average drag coefficients of the Robin Red Holly and Gold-Rider Leyland Cypress are still within the uncertainty bound of the overall drag coefficient and therefore are not large enough to have a practical implication. 
+
+Further analysis was conducted to compare the two leaf shape groups. As shown in Fig.~\ref{fig:Histogram}, the broad leaves group appears to have lower drag coefficients compared to the narrow leaves group. The average drag coefficient of the broad leaves group was 2.5 with an expanded uncertainty of 0.2 while the narrow leaves group had an average of 3.1 with an expanded uncertainty of 0.2. In comparison, the two groups have significantly different means, with the average drag coefficient of the narrow leaves group being higher. However, the average drag coefficients of both groups are still within the uncertainty bound of the overall average drag coefficient suggesting that mean drag coefficient obtained from all samples could be a reasonable approximation when applied as a consistent drag coefficient for vegetation canopies in CFD models. 
+
 \begin{table}[!]
-\caption{Drag Coefficient Summary of Vegetation Samples}
+
+\caption{Drag Coefficient Summary of Vegetation Samples.}
 \label{tab:SumTable}
 \centering
-
 	\footnotesize
-	\begin{tabular}{cccccccccc}	
+	\begin{tabular}{cccccccccccc}	
 			\hline
-\textbf{Sample}		&	\textbf{Cut}	&\textbf{Position}& $C_{\rm d}$ 	&\textbf{Uncertainty}	&\textbf{Sample}	&	\textbf{Cut}	&\textbf{Position}& 	\textbf{$C_{\rm d}$ }&\textbf{Uncertainty}\\
+\textbf{Sample}		& \textbf{$\beta$\,(\%)}		&\textbf{Position}& $C_{\rm d}$ &\textbf{Uncertainty}	&\textbf{Sample}		& \textbf{$\beta$\,(\%)}&\textbf{Position}& 	\textbf{$C_{\rm d}$ }&\textbf{Uncertainty}\\
 \hline
 \\[0.05cm]
-Blue Spruce				&	0	&	A	& 	3.6	&	0.9				& Cypress       		&	0	&	A	& 	3.0	&	0.9	\\
-					&		&	B	& 	3.1	&	0.8				&				&		&	B	& 	3.2	&	0.8	\\
-					&		&	C	& 	3.1	&	0.8				&				&		&	C	& 	3.4	&	1.0	\\
-					&		&	D	& 	3.0	&	0.8				&				&		&	D	& 	3.0	&	0.8	\\
-					&	1	&	A	& 	3.8	&	0.8				&				&	1	&	A	& 	3.3	&	0.8	\\
-					&		&	B	& 	3.0	&	0.7				&				&		&	B	& 	2.9	&	0.7	\\
-					&		&	C	& 	3.1	&	0.7				&				&		&	C	& 	3.3	&	0.8	\\
-					&		&	D	& 	3.6	&	0.8				&				&		&	D	& 	3.8	&	0.9	\\
-					&	2	&	A	& 	3.2	&	0.7				&				&	2	&	A	& 	2.1	&	0.5	\\
-					&		&	B	& 	2.6	&	0.6				&				&		&	B	& 	3.2	&	0.7	\\
-					&		&	C	& 	2.5	&	0.5				&				&		&	C	& 	3.1	&	0.7	\\
-					&		&	D	& 	2.8	&	0.6				&				&		&	D	& 	3.3	&	0.7	\\
-					&	3	&	A	& 	2.5	&	0.6				&				&	3	&	A	& 	2.9	&	0.7	\\
-					&		&	B	& 	2.3	&	0.7				&				&		&	B	& 	3.9	&	0.9	\\
-					&		&	C	& 	2.2	&	0.7				&				&		&	C	& 	3.0	&	0.8	\\
-					&		&	D	& 	2.2	&	0.7				&				&		&	D	& 	3.8	&	0.9	\\
-					&		&		& 		&					&				&		&		& 		&		\\
-White Pine	       			 &	0	&	A	& 	4.4	&	1.2				& Fern	       		 &	0	&	A	& 	3.4	&	0.9	\\
-					&		&	B	& 	2.8	&	0.7				&				&		&	B	& 	3.1	&	0.8	\\	
-					&		&	C	& 	2.1	&	0.6				&				&		&	C	& 	3.3	&	0.9	\\
-					&		&	D	& 	3.6	&	0.9				&				&		&	D	& 	2.6	&	0.7	\\
-					&		&		& 		&					&				&		&		& 		&		\\
-Distylium				&	0	&	A	& 	3.2	&	0.7				&Red Holly			&	0	&	A	& 	3.1	&	0.8	\\
-					&		&	B	& 	2.9	&	0.7				&				&		&	B	& 	2.6	&	0.7	\\
-					&		&	C	& 	3.1	&	0.7				&				&		&	C	& 	2.5	&	0.7	\\
-					&		&	D	& 	3.4	&	0.8				&				&		&	D	& 	2.7	&	0.8	\\
-					&	1	&	A	& 	2.7	&	0.6				&				&	1	&	A	& 	2.8	&	0.6	\\
-					&		&	B	& 	2.3	&	0.5				&				&		&	B	& 	2.0	&	0.5	\\
-					&		&	C	& 	3.1	&	0.7				&				&		&	C	& 	2.5	&	0.6	\\
-					&		&	D	& 	2.9	&	0.7				&				&		&	D	& 	1.8	&	0.4	\\
-					&	2	&	A	& 	2.0	&	0.5				&				&	2	&	A	& 	3.4	&	0.6	\\
-					&		&	B	& 	1.5	&	0.4				&				&		&	B	& 	2.2	&	0.4	\\
-					&		&	C	& 	1.7	&	0.5				&				&		&	C	& 	2.7	&	0.5	\\
-					&		&	D	& 	2.6	&	0.6				&				&		&	D	& 	2.5	&	0.5	\\
-					&		&		& 		&					&				&	3	&	A	& 	2.1	&	0.5	\\
-					&		&		& 		&					&				&		&	B	& 	1.6	&	0.5	\\
-					&		&		& 		&					&				&		&	C	& 	1.6	&	0.5	\\
-					&		&		& 		&					&				&		&	D	& 	1.7	&	0.5	\\
+Blue Spruce			&	1.9	&	A	& 	3.6		&	0.5			& Cypress       		&	1.7	&	A	& 	3.0	&	0.5	\\
+				&		&	B	& 	3.1		&	0.5			&				&		&	B	& 	3.2	&	0.5	\\
+				&		&	C	& 	3.1		&	0.4			&				&		&	C	& 	3.4	&	0.5	\\
+				&		&	D	& 	3.0		&	0.4			&				&		&	D	& 	3.0	&	0.4	\\
+				&	1.8	&	A	& 	3.8		&	0.5			&				&	1.4	&	A	& 	3.3	&	0.4	\\
+				&		&	B	& 	3.0		&	0.4			&				&		&	B	& 	2.9	&	0.4	\\
+				&		&	C	& 	3.1		&	0.4			&				&		&	C	& 	3.3	&	0.4	\\
+				&		&	D	& 	3.6		&	0.4			&				&		&	D	& 	3.8	&	0.4	\\
+				&	1.2	&	A	& 	3.2		&	0.4			&				&	1.2	&	A	& 	2.1	&	0.5	\\
+				&		&	B	& 	2.6		&	0.3			&				&		&	B	& 	3.2	&	0.3	\\
+				&		&	C	& 	2.5		&	0.3			&				&		&	C	& 	3.1	&	0.4	\\
+				&		&	D	& 	2.8		&	0.3			&				&		&	D	& 	3.3	&	0.4	\\
+				&	0.7	&	A	& 	2.5		&	0.4			&				&	0.9	&	A	& 	2.9	&	0.4	\\
+				&		&	B	& 	2.3		&	0.4			&				&		&	B	& 	3.9	&	0.4	\\
+				&		&	C	& 	2.2		&	0.4			&				&		&	C	& 	3.0	&	0.5	\\
+				&		&	D	& 	2.2		&	0.4			&				&		&	D	& 	3.8	&	0.5	\\
+				&		&		& 			&				&				&		&		& 		&		\\
+White Pine	       		&	2.8	&	A	& 	4.4		&	0.7			& Fern	       		&	0.4	&	A	& 	3.4	&	0.5	\\
+				&		&	B	& 	2.8		&	0.4			&				&		&	B	& 	3.1	&	0.4	\\	
+				&		&	C	& 	2.1		&	0.4			&				&		&	C	& 	3.3	&	0.5	\\
+				&		&	D	& 	3.6		&	0.5			&				&		&	D	& 	2.6	&	0.4	\\
+				&		&		& 			&				&				&		&		& 		&		\\
+Distylium			&	0.5	&	A	& 	3.2		&	0.4			&Red Holly			&	2.7	&	A	& 	3.1	&	0.5	\\
+				&		&	B	& 	2.9		&	0.4			&				&		&	B	& 	2.6	&	0.4	\\
+				&		&	C	& 	3.1		&	0.4			&				&		&	C	& 	2.5	&	0.4	\\
+				&		&	D	& 	3.4		&	0.4			&				&		&	D	& 	2.7	&	0.4	\\
+				&	0.4	&	A	& 	2.7		&	0.3			&				&	2.3	&	A	& 	2.8	&	0.4	\\
+				&		&	B	& 	2.3		&	0.3			&				&		&	B	& 	2.0	&	0.3	\\
+				&		&	C	& 	3.1		&	0.4			&				&		&	C	& 	2.5	&	0.3	\\
+				&		&	D	& 	2.9		&	0.4			&				&		&	D	& 	1.8	&	0.3	\\
+				&	0.3	&	A	& 	2.0		&	0.3			&				&	2.2	&	A	& 	3.4	&	0.3	\\
+				&		&	B	& 	1.5		&	0.2			&				&		&	B	& 	2.2	&	0.2	\\
+				&		&	C	& 	1.7		&	0.3			&				&		&	C	& 	2.7	&	0.3	\\
+				&		&	D	& 	2.6		&	0.3			&				&		&	D	& 	2.5	&	0.3	\\
+				&		&		& 			&				&				&	2.1	&	A	& 	2.1	&	0.3	\\	
+				&		&		& 			&				&				&		&	B	& 	1.6	&	0.3	\\
+				&		&		& 			&				&				&		&	C	& 	1.6	&	0.3	\\
+				&		&		& 			&				&				&		&	D	& 	1.7	&	0.3	\\
 \\[0.05cm]
 \hline														
 \end{tabular}
 \end{table}
 
-To determine if the average drag coefficient depends on the type of vegetation a one-way analysis of variance (ANOVA) was implemented on the drag coefficients of the different vegetation samples. The analysis yielded a significant variation ($F(5,62)=4.88$, $p=7.97 \times 10^{-4}$) among the species\footnote{The $F$ refers to the statistic obtained from the F-test conducted in the ANOVA, the 5 and 62 in brackets represent the degrees of freedom, and the 4.88 is the actual F statistic derived from the ANOVA. The $p$ refers to the significance level determined from the F statistic and the $7.97 \times 10^{-4}$ is the actual p-value which was determined to be less than the chosen confidence level of 0.05, indicating a significant difference between the mean drag coefficients of the samples.}. A Tukey test was subsequently applied to if the species-specific average drag coefficients were significantly different from each other. The results showed one significant difference between the species' average drag coefficients: the Robin Red Holly and Gold-Rider Leyland Cypress. Despite this statistically significant difference, the average drag coefficients of the Robin Red Holly and Gold-Rider Leyland Cypress are both within one standard deviation away from the overall average drag coefficient, as demonstrated in Fig.~\ref{fig:Histogram},  and therefore is not large enough to have a practical implication. It can then be concluded that the variance of drag coefficients determined for each species is non-significant, meaning the overall average drag coefficient presented in Fig.~\ref{fig:Histogram} could be applied as a consistent drag coefficient for vegetation canopies in CFD models.
-
 \section{Comparison Between Vegetation Data and Tube Bank Models}
 \label{sec:comp}
 
-In comparison to previous work~\cite{Cao2012,Jalonen2014,Mayhead1973,Gillies2002,Ishikawa2006}, the magnitude of the measured drag coefficients in this study is relatively large. As discussed in Section~\ref{sec:intro}, most previous studies have measured the wind resistance of a single plant or tree within a larger wind tunnel while this work considered a relatively homogenous distribution of vegetation within a tunnel. The interpretation of ``freestream'' velocity, shape factor, cross-sectional area, and so on, are often different in these studies, making it difficult to compare drag coefficients from one study to another. Within the field, there is no single definition of drag coefficient in regard to vegetation.
+In comparison to previous work~\cite{Cao2012,Jalonen2014,Mayhead1973,Gillies2002,Ishikawa2006}, the magnitude of the measured drag coefficients in this study is relatively large. As discussed in Section~\ref{sec:intro}, most previous studies have measured the wind resistance of a single plant or tree within a larger wind tunnel while this work considered a relatively homogenous distribution of vegetation within a tunnel. The interpretation of ``freestream'' velocity, shape factor, cross-sectional area, and so on, are often different in these studies, making it difficult to compare drag coefficients from one study to another. Within the field, there is no single definition of drag coefficient regarding vegetation.
 
-As a way to verify the accuracy of our wind tunnel measurements and the validity of our drag coefficient derivation, we considered a bank of regularly-spaced, staggered, vertical cylinders within our wind tunnel, using both actual steel rods and empirical results from Idelchik~\cite{Idelchik1994}. For each of the measured vegetation samples, a comparable configuration of vertical tubes was chosen such that the volume fraction, $\beta$, ``absorption coefficient,'' $\kappa$, and characteristic diameter, $D$, match as closely as possible (see Table~\ref{tab:tube_parameters}). The characteristic diameter was calculated from Eq.~\ref{eq:Kappa} using the measured $\beta$ and $\kappa$ values and assuming a cylindrical shape factor ($C_{\mathrm{s}} = 1/\pi$). To account for the repeated tube formation for each row, the $\kappa$ value of the tube bank was determined from the distance between rows, $L'$, and Eq.~\ref{eq:WhiteFraction}. According to Idelchik, the expected pressure drop through the tube bank is:
+As a way to verify the accuracy of our wind tunnel measurements and the validity of our drag coefficient derivation, we considered a bank of regularly-spaced, staggered, vertical cylinders within our wind tunnel, using both actual steel rods and empirical results from Idelchik~\cite{Idelchik1994}. For each of the measured vegetation samples, a comparable configuration of vertical tubes was chosen such that the volume fraction, $\beta$, ``absorption coefficient,'' $\kappa$, and characteristic diameter, $D$, match as closely as possible (see Table~\ref{tab:tube_parameters}). The characteristic diameter was calculated from Eq.~\ref{eq:Kappa} using the measured $\beta$ and $\kappa$ values and assuming a cylindrical shape factor ($C_{\mathrm{s}} = 1/\pi$). To account for the repeated tube formation for each row the $\kappa$ value of the tube bank was determined from the distance between rows, $L'$, and Eq.~\ref{eq:WhiteFraction}. According to Idelchik, the expected pressure drop through the tube bank is:
 \begin{equation}
 \label{eq:IdelchickTB}
 \Delta P = \frac{\rho}{2}\, \zeta  \left( \frac{U}{W} \right)^2  \quad ; \quad \zeta = A \, \mathrm{Re}^{-0.27} (N_\mathrm{r}+1) \quad ; \quad  \mathrm{Re} = \frac{(U/W) \, D \, \rho}{\mu_\mathrm{air}}
@@ -515,12 +517,12 @@ where $A$ is a geometric parameter determined from the tube bank configuration, 
     \hline
                                  & \multicolumn{2}{|c|}{$\beta$ (\%)} & \multicolumn{2}{|c|}{$\kappa$ (m$^{-1}$)} & \multicolumn{2}{|c|}{$D$ (mm)} &                             &                         &         \\ \cline{2-7}
     \raisebox{1.5ex}[0pt]{Pos.}  & Veg.             & Tubes      & Veg.                 & Tubes              & Veg.              & Tubes      & \raisebox{1.5ex}[0pt]{Rows} & \raisebox{1.5ex}[0pt]{$\textfrac{\rm{Tubes}}{\rm{Row}}$} &\raisebox{1.5ex}[0pt]{$L'$ (cm)}\\ \hline \hline
-    \multicolumn{10}{|c|}{Bakers Blue Spruce, Cut 1}                                                                                                                                                    \\ \hline
+    \multicolumn{10}{|c|}{Blue Spruce}                                                                                                                                                    \\ \hline
     A                            & 1.8            & 1.8      & 2.4                  & 2.4                & 9.4               & 10.6        & 5                           & 10           &          10.0           \\ \hline
     B                            & 1.8            &1.8     & 2.6                & 2.6               &8.6               & 9.5       & 7                           & 9                      &         7.1  \\ \hline
     C                            & 1.8            & 1.7      & 2.3                  & 2.3                & 9.7               & 11.2       &4                            & 11            &      12.5             \\ \hline
     D                            & 1.8           & 1.8      & 2.5                 & 2.5               & 8.9             & 10.4       & 4                           & 13                 &  12.5             \\ \hline
-        \multicolumn{10}{|c|}{Gold Rider Leyland Cypress, Cut 1}                                                                                                                                                    \\ \hline
+        \multicolumn{10}{|c|}{Cypress}                                                                                                                                                    \\ \hline
     A                            &1.4           & 1.4      & 2.1                  & 2.2                & 8.3              & 8.9       & 7                           & 8                 &   7.1         \\ \hline
     B                            & 1.4          & 1.4      & 1.9                  & 2.0               & 9.2               & 10.7        & 3                           & 13            &   16.7                 \\ \hline
     C                            & 1.4           & 1.4     & 2.2                  & 2.2                & 8.1               & 9.3       & 4                          & 13               &   12.5       \\ \hline
@@ -530,8 +532,8 @@ where $A$ is a geometric parameter determined from the tube bank configuration, 
 
 \begin{figure}[!]
 	\centering 	
-\includegraphics[width=1\linewidth]{Picture13.jpg}
-	\caption[Drag Coefficient comparison between vegetation samples and tube bank configurations]{Drag Coefficient comparison between vegetation sample configurations (Bakers Blue Spruce, Cut 1 and Gold Rider Leyland Cypress, Cut 1) and thier corresponding tube bank configuration with respect to velocity}
+\includegraphics[width=\textwidth,keepaspectratio]{Picture13.jpg}
+	\caption[Drag Coefficient comparison between vegetation samples and tube bank configurations]{Drag Coefficient comparison between vegetation sample configurations [Bakers Blue Spruce ($\beta$=1.8\%) and Gold Rider Leyland Cypress ($\beta$=1.4\%)] and their corresponding tube bank configuration with respect to velocity}
 	\label{fig:TBGR}
 \end{figure}
 
@@ -544,7 +546,7 @@ This report documents a series of experiments implemented to determine the absor
 
 \begin{enumerate}
   \item The calculated absorption coefficient for each sample demonstrated a strong relationship with its corresponding solid fraction.
-  \item The overall average drag coefficient of the bulk vegetation was found to be 2.8 with a standard deviation of 0.6. The differences between the average drag coefficients of different plant species were concluded to be non-significant suggesting that the overall average drag coefficient could be used as a constant value in CFD models of various plant types.
+  \item The overall average drag coefficient of the bulk vegetation was found to be 2.8 with an expanded uncertainty of 0.4. The differences between the average drag coefficients of different plant species and or leaves type groups were concluded to be non-significant suggesting that the overall average drag coefficient could be used as a constant value in CFD models of various plant types.
 \end{enumerate}
 
 \section*{Acknowledgments}
@@ -602,18 +604,23 @@ u_{\scriptscriptstyle \Delta P} = \sqrt{ u_{\rm \scriptscriptstyle cal}^2 + s_{\
 
 The density of air was determined from the absolute pressure, temperature, and relative humidity readings obtained simultaneously with the wind tunnel measurements:
 \begin{equation}
-\rho  =  \frac{P - \phi\,P_{\mathrm{sat}}}{R_d\,T}+\frac{\phi\,P_{\mathrm{sat}}}{R_v\,T}
+\rho  =  \frac{P}{R\,T}
 \end{equation}
-where $T$ is the measured air temperature,$\phi$ is the relative humidity, $P$ and $P_{\rm{sat}}$ are the absolute and saturation vapor pressures, respectively, and  $R_d$ and $R_v$ are the specific gas constants for dry air (287~\si{\frac{J}{kg\,K}}) and water vapor (461~\si{\frac{J}{kg\,K}}), respectively. The saturation vapor pressure was calculated from the temperature readings of the testing facility:
+where $T$ is the measured air temperature, $P$ is the absolute pressure , and  $R$ is the specific gas constants for air (287~\si{\frac{J}{kg\,K}}). The Type A evaluation of uncertainty of air density was determined from the standard uncertainty of the absolute pressure, $s_{\scriptscriptstyle P}$, and temperature, $s_{\scriptscriptstyle T}$, readings of the testing facility. The Type B evaluation of air density was determined from the error sources in the instrauments,$ u_{\rm \scriptscriptstyle inst.}$, used to measure the absolute pressure (1~\% accuracy of the pressure gauge) and temperature (1.5~$^{\circ}$ C) of air in the testing facility. The combined uncertainty of the pressure and temperature was found via quadrature:
 \begin{equation}
-P_{\mathrm{sat}} =6.1078\, \times \, 10^{\frac{7.5\,T}{T+237.3}}
+\label{eq:abspressureuncertainty}
+u_{\scriptscriptstyle P} = \sqrt{ u_{\rm \scriptscriptstyle inst.}^2 + s_{\scriptscriptstyle P}^2}
 \end{equation}
-The Type A evaluation of uncertainty of air density was determined from the standard uncertainty of the absolute pressure, $s_{\scriptscriptstyle P}$, temperature, $s_{\scriptscriptstyle T}$, and relative humidity, $s_{\scriptscriptstyle \phi}$, readings of the testing facility. The standard uncertainty of the air density was determined through the law propagation of uncertainties:
 \begin{equation}
-\label{eq:Densityuncertainty}
-u_{\scriptscriptstyle \rho} = \sqrt{{\left( \frac{\partial \rho}{\partial P}\,s_{\scriptscriptstyle P} \right) }^2+{\left(\frac{\partial \rho}{\partial T}\,s_{\scriptscriptstyle T}\right)}^2+{\left(\frac{\partial \rho}{\partial \phi}\,s_{\scriptscriptstyle \phi}\right)}^2}
+\label{eq:tempuncertainty}
+u_{\scriptscriptstyle T} = \sqrt{ u_{\rm \scriptscriptstyle inst.}^2 + s_{\scriptscriptstyle T}^2}
 \end{equation}
 
+The standard uncertainty of the air density was determined through the law propagation of uncertainties:
+\begin{equation}
+\label{eq:Densityuncertainty}
+u_{\scriptscriptstyle \rho} = \sqrt{{\left( \frac{\partial \rho}{\partial P}\,u_{\scriptscriptstyle P} \right) }^2+{\left(\frac{\partial \rho}{\partial T}\,u_{\scriptscriptstyle T}\right)}^2}
+\end{equation}
 
 \subsection{Velocity}
 \label{ssec:VelUncertainty}
