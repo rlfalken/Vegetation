@@ -161,6 +161,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \normalsize Ryan Falkenstein-Smith\\
 Kevin McGrattan\\
+Blaza Toman\\
 Marco Fernandez\\
 \textit{Fire Research Division}\\
 \textit{Engineering Laboratory}\\
@@ -369,7 +370,7 @@ The key results of this work are the relationship between the ``absorption coeff
 
 \subsection{Relationship between the absorption coefficient $\kappa$ and solid fraction $\beta$ }
 
-Figure~\ref{fig:betavkappa} presents the relationship between the ``absorption coefficient,'' $\kappa$, and the solid fraction, $\beta$, for all sample configurations. The symbols indicate the measured values while the dotted lines represent a linear regression fit. Each line represents a particular type of vegetation that has been pruned, reducing both the volume fraction, $\beta$, the projected free-area coefficient, $W$, and the corresponding value of $\kappa$. There ought to be a linear relationship between $\kappa$ and $\beta$ if the shape factor, $C_{\rm s}$, and surface to volume ratio, $\sigma$ are constant, as shown in Eq.~(\ref{eq:Kappa}). However, this is not the case when the vegetative components are not uniform in size. Take, for example, the Robin Red Holly data shown in Fig.~\ref{fig:betavkappa}. As $\beta$ decreases, $\kappa$ should approach zero, as demonstrated by most samples. As the leaves of the Robin Red Holly were pruned, $\kappa$ decreased significantly even though its volume fraction did not, owing to the fact the ratio of branch to leaf volume of the Robin Red Holly is substantially higher than the other plant species, as shown in Table~\ref{tab:RatioTable}.  As a result, the free-surface area, $W$, decreases from the removal of leaves, thus reducing $\kappa$, while still maintaining a relatively consistent solid fraction due to the significant volume contribution of the branches.
+Figure~\ref{fig:betavkappa} presents the relationship between the averaged ``absorption coefficient,'' $\kappa$, and the solid fraction, $\beta$, for the sample configurations of the Bakers Blue Spruce, Evergreen Distylium, Gold Rider Leyland Cypress, and Robin Red Holly . The symbols indicate the measured values while the dotted lines represent a linear regression fit. Each line represents a particular type of vegetation that has been pruned, reducing both the volume fraction, $\beta$, the projected free-area coefficient, $W$, and the corresponding value of $\kappa$. There ought to be a linear relationship between $\kappa$ and $\beta$ if the shape factor, $C_{\rm s}$, and surface to volume ratio, $\sigma$ are constant, as shown in Eq.~(\ref{eq:Kappa}). However, this is not the case when the vegetative components are not uniform in size. Take, for example, the Robin Red Holly data shown in Fig.~\ref{fig:betavkappa}. As $\beta$ decreases, $\kappa$ should approach zero, as demonstrated by most samples. As the leaves of the Robin Red Holly were pruned, $\kappa$ decreased significantly even though its volume fraction did not, owing to the fact the ratio of branch to leaf volume of the Robin Red Holly is substantially higher than the other plant species, as shown in Table~\ref{tab:RatioTable}.  As a result, the free-surface area, $W$, decreases from the removal of leaves, thus reducing $\kappa$, while still maintaining a relatively consistent solid fraction due to the significant volume contribution of the branches.
 
 \begin{figure}[!h]
 	\centering 	
@@ -427,18 +428,34 @@ Figure~\ref{fig:DPvU(Overall)} displays the relationship between the freestream 
 	\label{fig:DPoveraf(Overall)}
 \end{sidewaysfigure}
 
-The distribution of the measured drag coefficients for all sample configurations is shown in Fig.~\ref{fig:Histogram}. The collection of sample configurations is divided into two groups based on leaf shape (i.e., broad and narrow). The broad leaves group included the Evergreen Distylium, a Kimberly Queen Fern, and a Robin Red Holly while the narrow leaves group was comprised of the remaining species. The average drag coefficient of all sample configurations was determined to be 2.8 with an expanded uncertainty of 0.4. 
+The distribution of the measured drag coefficients for all sample configurations is shown in Fig.~\ref{fig:Histogram}. The collection of sample configurations is divided into two groups based on leaf shape (i.e., narrow and broad). The narrow leaves group included the Bakers Blue Spruce, Blue Shag Eastern White Pine, and Gold Rider Leyland Cypress while the broad leaves group was comprised of the remaining species. The average drag coefficient of all sample configurations was determined to be 2.8 with an expanded uncertainty of 0.4. 
 
 \begin{figure}[!]
 	%\centering 	
 \includegraphics[width=\textwidth,keepaspectratio]{Picture11.jpg}
-	\caption[Distribution of drag coefficients for all samples (top), samples with broad leaves (bottom left), samples with narrow leaves (bottom right)]{Distribution of vegetation samples drag coefficients with noted mean and standard deviation values}
+	\caption[Distribution of drag coefficients for all samples (top), samples with narrow leaves (bottom left), samples with broad leaves (bottom right)]{Distribution of vegetation samples drag coefficients with noted mean and standard deviation values}
 	\label{fig:Histogram}
 \end{figure}
 
-To determine if the average drag coefficient depends on the type of vegetation a one-way analysis of variance (ANOVA) was implemented on the drag coefficients of the different vegetation samples. The analysis yielded a significant variation ($F(5,62)=4.88$, $p=7.97 \times 10^{-4}$) among the species\footnote{The $F$ refers to the statistic obtained from the F-test conducted in the ANOVA, the 5 and 62 in brackets represent the degrees of freedom, and the 4.88 is the actual F statistic derived from the ANOVA. The $p$ refers to the significance level determined from the F statistic and the $7.97 \times 10^{-4}$ is the actual p-value which was determined to be less than the chosen confidence level of 0.05, indicating a significant difference between the mean drag coefficients of the samples.}. A Tukey test was subsequently applied to determine if the species-specific average drag coefficients were significantly different from each other. The results showed one significant difference between the species' average drag coefficients: the Robin Red Holly and Gold-Rider Leyland Cypress. Despite the significant difference, the average drag coefficients of the Robin Red Holly and Gold-Rider Leyland Cypress are still within the uncertainty bound of the overall drag coefficient and therefore are not large enough to have a practical implication. 
+To determine if the average drag coefficient depends on the type of vegetation a random effects one-way ANOVA was implemented on the drag coefficients of the different vegetation samples. The analysis yielded a significant variation ($F(5,62)=4.88$, $p=7.97 \times 10^{-4}$) among the species\footnote{The $F$ refers to the statistic obtained from the F-test conducted in the ANOVA, the 5 and 62 in brackets represent the degrees of freedom, and the 4.88 is the actual F statistic derived from the ANOVA. The $p$ refers to the significance level determined from the F statistic and the $7.97 \times 10^{-4}$ is the actual p-value which was determined to be less than the chosen confidence level of 0.05, indicating a significant difference between the mean drag coefficients of the samples.}. A Tukey's test~\cite{Lane2010} was subsequently applied to determine if the species-specific average drag coefficients were significantly different from each other. The results showed one significant difference between the species' average drag coefficients: the Robin Red Holly and Gold-Rider Leyland Cypress. Despite the significant difference, the average drag coefficients of the Robin Red Holly and Gold-Rider Leyland Cypress are still within the uncertainty bound of the overall drag coefficient and therefore are not large enough to have a practical implication. 
 
-Further analysis was conducted to compare the two leaf shape groups. As shown in Fig.~\ref{fig:Histogram}, the broad leaves group appears to have lower drag coefficients compared to the narrow leaves group. The average drag coefficient of the broad leaves group was 2.5 with an expanded uncertainty of 0.2 while the narrow leaves group had an average of 3.1 with an expanded uncertainty of 0.2. In comparison, the two groups have significantly different means, with the average drag coefficient of the narrow leaves group being higher. However, the average drag coefficients of both groups are still within the uncertainty bound of the overall average drag coefficient suggesting that mean drag coefficient obtained from all samples could be a reasonable approximation when applied as a consistent drag coefficient for vegetation canopies in CFD models. 
+Further analysis was conducted to compare the two leaf shape groups. A one-way random effects model~\cite{Toman2009} for the measurements of the broad leaves groups, assumes that the drag coefficient is
+
+\begin{equation}
+\label{eq:NarrowLeavesDragCoefficient}
+C_{\rm d,ij}\sim\,N(m_{1},{u_{ij}}^2+{\sigma}^2),\, i = 1,...,3; j = 1,...,n_{i}
+\end{equation} 
+where $i$ denotes the species of vegetation (1 for Bakers Blue Spruce, 2 for Blue Shag Eastern White Pine, and 3 for Gold Rider Leyland Cypress), and $j$ denotes the measurement. The sample size of the species of vegetation is $n_{i}$. The $u_{ij}$. The parameter $m_{1}$ is the overall mean of the narrow leaves group and $\sigma$ is the between kind of vegetation species uncertainty. 
+
+Similarly, a one-way random effects model for the measurements of narrow leaves group, assumes that the drag coefficient is
+
+\begin{equation}
+\label{eq:BroadLeavesDragCoefficient}
+C_{\rm d,ij}\sim\,N(m_{2},{u_{ij}}^2+{\sigma}^2),\, i = 4,...,6; j = 1,...,n_{i}
+\end{equation} 
+where $i$ denotes the species of vegetation (4 for Distylium, 5 for Fern, and 6 for Red Holly). The parameter $m_{2}$ is the overall mean of the broad leaves group.
+
+Using a Bayesian statistical model~\cite{Gelman2008} with non-informative priors for $m_{1}$, $m_{2}$, and $\sigma$, we obtain via Markov Chain Monte Carlo implemented in OpenBUGS~\cite{Lunn2009} the posterior means and standard uncertainties of the parameters. These are: $m_{1}$ is 3.0 with an expanded (95~\%) uncertainty of 0.2, $m_{2}$ is 2.4 with an expanded (95~\%) uncertainty of 0.3, and the 95~\% uncertainty interval for the difference $m_{1}-m_{2}$ is (0.052, 0.87). This may be interpreted as a rejection of a hypothesis test of $H_{0}$:$m_{1}-m_{2}$ = 0 at a level of 5~\%. Despite the differences in the average drag coefficients of both groups, they both lie within the uncertainty bound of the overall average drag coefficient, which suggests that mean drag coefficient obtained from all samples could be a reasonable approximation when applied as a consistent drag coefficient for vegetation canopies in CFD models. 
 
 \begin{table}[!]
 
@@ -546,7 +563,7 @@ This report documents a series of experiments implemented to determine the absor
 
 \begin{enumerate}
   \item The calculated absorption coefficient for each sample demonstrated a strong relationship with its corresponding solid fraction.
-  \item The overall average drag coefficient of the bulk vegetation was found to be 2.8 with an expanded uncertainty of 0.4. The differences between the average drag coefficients of different plant species and or leaves type groups were concluded to be non-significant suggesting that the overall average drag coefficient could be used as a constant value in CFD models of various plant types.
+  \item The overall average drag coefficient of the bulk vegetation was found to be 2.8 with an expanded uncertainty of 0.4. The differences between the average drag coefficients of different plant species as well as the leaf type groups were shown to be significant, while still falling in the overall mean's uncertainty bound, suggesting that the overall average drag coefficient could be used as a constant value in CFD models of various plant types.
 \end{enumerate}
 
 \section*{Acknowledgments}
