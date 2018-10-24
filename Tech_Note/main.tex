@@ -354,7 +354,7 @@ An uncertainty analysis was conducted for the pressure and air density measureme
 \subsection{Determining the Volume of Vegetation via Water Displacement}
 \label{ssec:waterdisp}
 
-The volume of the vegetation was measured after a sample cut. The extracted vegetation was separated into branches and leaves and put into cloth mesh bags of known mass and volume, weighed\footnote{The mass was measured to estimate the water absorbed by the sample. The volume of water absorbed was subtracted from the volume of vegetation measured from the beaker.}, and submerged in a bucket. The displaced water flowed through a spout and into a beaker (Fig.~\ref{fig:wdt}). The measurement was repeated three times for each sample. The solid fraction, $\beta$, was calculated by dividing the average sample volume by the volume it occupied (0.5~\si{m} $\times$ 0.5~\si{m} $\times$ 0.5~\si{m} = 0.125~\si{m^{3}}). 
+The volume of the vegetation was measured after a sample cut. The extracted vegetation was separated into branches and leaves and put into cloth mesh bags of known mass and volume, weighed\footnote{The mass was measured to estimate the water absorbed by the sample. The volume of water absorbed was subtracted from the volume of vegetation measured from the beaker.}, and submerged in a bucket. The displaced water flowed through a spout and into a beaker (Fig.~\ref{fig:wdt}). The measurement was repeated three times for each sample. The solid fraction, $\beta$, was calculated by dividing the average sample volume by the volume it occupied (0.5~\si{m} $\times$ 0.5~\si{m} $\times$ 0.5~\si{m} = 0.125~\si{m^{3}}).
 
 The combined standard uncertainty of the measured solid sample volume combines, via quadrature, the Type A standard uncertainty, taken as the standard deviation of the repeated measurements, and the Type~B standard uncertainty, taken as the standard deviation of the assumed uniform distribution that characterizes the uncertainty in the reading of the graduated cylinder, $5/\sqrt{12}$~mL, where the cylinder has 5~mL grading divisions.
 
@@ -393,7 +393,7 @@ Figure~\ref{fig:betavkappa} presents the relationship between the averaged ``abs
 	
 	\begin{tabular*}{\textwidth}{lcclcc}	
 			\hline
-\rule{0pt}{14pt}\textbf{Sample}	&\textbf{$\beta$\,(\%)}	& {\bf Branch/Leaf Volume}  \hspace{.2in}  		&\textbf{Sample}		&	\textbf{$\beta$\,(\%)}	& {\bf Branch/Leaf Volume}	\\
+\rule{0pt}{14pt}\textbf{Sample}	&\textbf{$\beta$\,(\%)}	& {\bf Branch/Leaf Vol.}  \hspace{.2in}  		&\textbf{Sample}		&	\textbf{$\beta$\,(\%)}	& {\bf Branch/Leaf Vol.}	\\
 \hline
 \\[0.01cm]
 Blue Spruce		    		&	1.9			& 	1.1			        				& Cypress       		&	1.7		&	1.5						\\
@@ -433,7 +433,7 @@ Figure~\ref{fig:DPvU(Overall)} displays the relationship between the freestream 
 	\label{fig:DPoveraf(Overall)}
 \end{sidewaysfigure}
 
-The distribution of the measured drag coefficients for all sample configurations is shown in Fig.~\ref{fig:Histogram}. The collection of sample configurations is divided into two groups based on leaf shape (i.e., narrow and broad). The narrow leaves group included the Bakers Blue Spruce, Blue Shag Eastern White Pine, and Gold Rider Leyland Cypress while the broad leaves group was comprised of the remaining species. The average drag coefficient of all sample configurations was determined to be 2.8 with an expanded uncertainty of 0.4. 
+The distribution of the measured drag coefficients for all sample configurations is shown in Fig.~\ref{fig:Histogram}. The collection of sample configurations is divided into two groups based on leaf shape (i.e., narrow and broad). The narrow leaves group included the Bakers Blue Spruce, Blue Shag Eastern White Pine, and Gold Rider Leyland Cypress while the broad leaves group was comprised of the remaining species. The average drag coefficient of all sample configurations was determined to be 2.8 with an expanded uncertainty of 0.4.
 
 \begin{figure}[!]
 	%\centering 	
@@ -442,23 +442,21 @@ The distribution of the measured drag coefficients for all sample configurations
 	\label{fig:Histogram}
 \end{figure}
 
-To determine if the average drag coefficient depends on the type of vegetation a random effects one-way ANOVA was implemented on the drag coefficients of the different vegetation samples. The analysis yielded a significant variation ($F(5,62)=4.88$, $p=7.97 \times 10^{-4}$) among the species\footnote{The $F$ refers to the statistic obtained from the F-test conducted in the ANOVA, the 5 and 62 in brackets represent the degrees of freedom, and the 4.88 is the actual F statistic derived from the ANOVA. The $p$ refers to the significance level determined from the F statistic and the $7.97 \times 10^{-4}$ is the actual p-value which was determined to be less than the chosen confidence level of 0.05, indicating a significant difference between the mean drag coefficients of the samples.}. A Tukey's test~\cite{Lane2010} was subsequently applied to determine if the species-specific average drag coefficients were significantly different from each other. The results showed one significant difference between the species' average drag coefficients: the Robin Red Holly and Gold-Rider Leyland Cypress. Despite the significant difference, the average drag coefficients of the Robin Red Holly and Gold-Rider Leyland Cypress are still within the uncertainty bound of the overall drag coefficient and therefore are not large enough to have a practical implication. 
+To determine if the average drag coefficient depends on the type of vegetation a random effects one-way ANOVA\footnote{Analysis of Variance} was implemented on the drag coefficients of the different vegetation samples. The analysis yielded a significant variation ($F(5,62)=4.88$, $p=7.97 \times 10^{-4}$) among the species\footnote{The $F$ refers to the statistic obtained from the F-test conducted in the ANOVA, the 5 and 62 in brackets represent the degrees of freedom, and the 4.88 is the actual F statistic derived from the ANOVA. The $p$ refers to the significance level determined from the F statistic and the $7.97 \times 10^{-4}$ is the actual p-value which was determined to be less than the chosen confidence level of 0.05, indicating a significant difference between the mean drag coefficients of the samples.}. A Tukey's test~\cite{Lane2010} was subsequently applied to determine if the species-specific average drag coefficients were significantly different from each other. The results showed one significant difference between the species' average drag coefficients: the Robin Red Holly and Gold-Rider Leyland Cypress. Despite the significant difference, the average drag coefficients of these two plant species are still within the uncertainty bound of the overall drag coefficient and therefore are not large enough to have a practical implication.
 
-Further analysis was conducted to compare the two leaf shape groups. A one-way random effects model~\cite{Toman2009} for the measurements of the narrow leaves groups, assumes that the drag coefficient is
+Further analysis was conducted to compare the two leaf shape groups. A one-way random effects model~\cite{Toman2009} for the measurements of the narrow leaves group assumes that the drag coefficients are normally distributed:
 \begin{equation}
 \label{eq:NarrowLeavesDragCoefficient}
-C_{\rm d,ij}\sim\,N(m_{1},{u_{ij}}^2+{\sigma}^2),\, i=\, 1,...,3; j=\, 1,...,n_{i}
-\end{equation} 
-where $i$ denotes the vegetation species (1 for Bakers Blue Spruce, 2 for Blue Shag Eastern White Pine, and 3 for Gold Rider Leyland Cypress), and $j$ denotes the measurement. The sample size of the vegetation species is $n_{i}$. The $u_{ij}$ are the drag coefficient uncertainties of a specfic species and measurement. The parameter $m_{1}$ is the overall mean drag coefficient of the narrow leaves group and $\sigma$ is the uncertainty that accounts for the variation in each group.
-
-Similarly, a one-way random effects model for the measurements of the broad leaves group, assumes that the drag coefficient is
+C_{\rm d,ij}\sim\,N(m_{1},{u_{ij}}^2+{\sigma_1}^2),\, i=\, 1,...,3; j=\, 1,...,n_{i}
+\end{equation}
+where $i$ denotes the plant species (1 for Bakers Blue Spruce, 2 for Blue Shag Eastern White Pine, and 3 for Gold Rider Leyland Cypress), and $j$ denotes the specific configuration of the plant in the tunnel. The sample size for a given plant species is $n_{i}$. The value of $u_{ij}$ is the standard uncertainty of the measured drag coefficient for a specific species and configuration. The parameters $m_{1}$ and $\sigma_1$ are the mean and standard deviation for the narrow leaves group, respectively. The drag measurements of the broad leaves group are modeled in a similar way:
 \begin{equation}
 \label{eq:BroadLeavesDragCoefficient}
-C_{\rm d,ij}\sim\,N(m_{2},{u_{ij}}^2+{\sigma}^2),\, i=\, 4,...,6; j = 1,...,n_{i}
-\end{equation} 
-where $i$\,=\,4 for Distylium, $i$\,=\,5 for Fern, and $i$\,=\,6 for Red Holly). The parameter $m_{2}$ is the overall mean drag coefficient of the broad leaves group.
+C_{\rm d,ij}\sim\,N(m_{2},{u_{ij}}^2+{\sigma_2}^2),\, i=\, 4,...,6; j = 1,...,n_{i}
+\end{equation}
+where $i$\,=\,4 for Distylium, $i$\,=\,5 for Fern, and $i$\,=\,6 for Red Holly). The parameters $m_2$ and $\sigma_2$ are the mean and standard deviation for the broad leaves group, respectively.
 
-Using a Bayesian statistical model~\cite{Gelman2008} with non-informative priors for $m_{1}$, $m_{2}$, and $\sigma$, we obtain via Markov Chain Monte Carlo implemented in OpenBUGS~\cite{Lunn2009} the posterior means and standard uncertainties of the parameters. These are: $m_{1}$ is 3.0 with an expanded (95~\%) uncertainty of 0.3, $m_{2}$ is 2.5 with an expanded (95~\%) uncertainty of 0.3, and the 95~\% uncertainty interval for the difference $m_{1}-m_{2}$ is (0.052, 0.87). This may be interpreted as a rejection of a hypothesis test of $H_{0}$:\,$m_{1}-m_{2}$=\,0 at a level of 5~\%. Despite the differences in the average drag coefficients of both groups, they both lie within the uncertainty bound of the overall average drag coefficient, which suggests that mean drag coefficient obtained from all samples could be a reasonable approximation when applied as a consistent drag coefficient for vegetation canopies in CFD models. 
+Using a Bayesian statistical model~\cite{Gelman2008} with non-informative priors for $m_{1}$, $m_{2}$, $\sigma_1$, and $\sigma_2$, we obtain via Markov Chain Monte Carlo implemented in OpenBUGS~\cite{Lunn2009} the posterior means and standard uncertainties of the parameters. These are: $m_{1}$ is 3.0 with an expanded (95~\%) uncertainty of 0.3, $m_{2}$ is 2.5 with an expanded (95~\%) uncertainty of 0.3, and the 95~\% uncertainty interval for the difference $m_{1}-m_{2}$ is (0.052, 0.87). This may be interpreted as a rejection of a hypothesis test of $H_{0}$:\,$m_{1}-m_{2}$=\,0 at a level of 5~\%. Despite the differences in the average drag coefficients of both groups, they both lie within the uncertainty bound of the overall average drag coefficient, which suggests that mean drag coefficient obtained from all samples could be a reasonable approximation when applied as a consistent drag coefficient for vegetation canopies in CFD models.
 
 \begin{table}[!]
 
