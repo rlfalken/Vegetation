@@ -30,7 +30,7 @@
 \usepackage{xcolor}
 \titleformat{\section}{\normalsize\bfseries}{\thesection.}{1em}{}	% required for heading numbering style
 \titleformat*{\subsection}{\normalsize\bfseries}
-
+        
 \usepackage{tocloft}	% change typeset, titles, and format list of appendices/figures/tables
 \renewcommand{\cftdot}{}	
 \renewcommand{\contentsname}{Table of Contents}
@@ -257,35 +257,44 @@ Measurements of this type have been performed by other researchers~\cite{Cao2012
 \section{Model Development}
 \label{ssec:headingscap}
 
-Consider a volume filled with a random collection of leaves, pine needles, or other types of vegetation, as shown in Fig.~\ref{fig:Canopymod}. This volume can be regarded as a single grid cell in a CFD model for which the computational domain may span hundreds to thousands of meters. At a given instant in the numerical simulation, this grid cell would have, at the very least, an average flow speed, $U$, and gas density, $\rho$.  The vegetation within the cell is typically modeled as a collection of subgrid-scale Lagrangian particles whose mass, size, and shape are characterized by a handful of parameters that can be determined with field measurements. These particles exert a force per unit volume given by:
+Consider a volume filled with a random collection of vegetative elements, like pine needles or leaves, as shown in Fig.~\ref{fig:Canopymod}. This volume can be regarded as a single grid cell in a CFD model for which the computational domain may span hundreds to thousands of meters. At a given instant in the numerical simulation, this grid cell would have, at the very least, an average flow speed, $U$, and gas density, $\rho$.  The vegetation within the cell is typically modeled as a collection of subgrid-scale Lagrangian particles whose mass, size, and shape are characterized by a handful of parameters that can be determined with field measurements. These particles exert a force per unit volume given by:
 \begin{equation}
 \label{eq:DragForce}
-F = \frac{1}{V} \, \frac{\rho}{2} \, \sum_{i=1}^N  C_{\rm d} \, A_{\mathrm{p},i} \, {U}^2
+F = \frac{N}{V_{\mathrm{c}}} \, \frac{\rho}{2} \,  C_{\rm d} \, A_{\mathrm{p}} \, U^2
 \end{equation}
-where $V$ is the volume of the grid cell, $A_{\mathrm{p},i}$ is the projected area of the $i$-th vegetative component, and $C_{\rm d}$ is a drag coefficient which is taken as a constant. Similar configurations have already been been adapted in numerical investigations~\cite{Pimont2009, Dupont2008}.
+where $N$ is the number of elements, $V_{\mathrm{c}}$ is the volume of the grid cell, $A_{\mathrm{p}}$ is the projected area of a single element, and $C_{\rm d}$ is a drag coefficient. Similar configurations have already been been adapted in numerical investigations~\cite{Pimont2009, Dupont2008}.
 \begin{figure}[!ht]
 	\centering 	\includegraphics[width=1.0\linewidth]{Picture1.jpg}
 	\caption{Vegetation translation to multi-component model}
 	\label{fig:Canopymod}
 \end{figure}
-
-Equation~(\ref{eq:DragForce}) can be recast in an equivalent form that is more useful for describing vegetation drag~\cite{Mueller2014}:
+A more convenient way to describe the vegetation is by specifying the surface to volume ratio of each element, $\sigma$, the volume (packing) ratio of the collection of elements, $\beta$, and a shape factor, $C_{\rm s}$, defined in this case as the ratio of the element's projected area to surface area. With this information, and the following relations:
+\begin{equation}
+   C_{\rm s} = \frac{A_{\mathrm{p}}}{A_{\mathrm{s}}} \quad ; \quad  \beta=\frac{N \, V_{\rm e}}{V_{\mathrm{c}}}  \quad ; \quad \sigma=\frac{A_{\rm s}}{V_{\rm e}} \label{Eq:relations}
+\end{equation}
+where $V_{\rm e}$ is the volume of an element and $A_{\mathrm{s}}$ its surface area, we can convert the drag force expression in Eq.~(\ref{eq:DragForce}) to an equivalent form~\cite{Mueller2014}:
 \begin{equation}
 \label{eq:DragForcea}
 F  = \frac{\rho}{2} C_{\rm d} \, C_{\mathrm{s}} \, \beta \, \sigma \, U^2
 \end{equation}
-where $C_{\mathrm{s}}$ is a shape factor defined in this case as the average ratio of the projected area to surface area of the vegetative elements, $\beta$ is the ratio of the volume occupied by vegetation to the volume of the grid cell, $V$, and $\sigma$ is an average surface area to volume ratio of the vegetative elements. Some of the terms are difficult to measure, such as the shape factor and surface to volume ratio, but collectively these terms may be combined to form a parameter that resembles an absorption coefficient:
+Some of the terms are difficult to measure, such as the shape factor and surface to volume ratio, but collectively these terms may be combined into a single parameter:
 \begin{equation}
 \label{eq:Kappa}
 \kappa = C_{\mathrm{s}} \, \beta \, \sigma
 \end{equation}
-$\kappa$ can be determined by measuring the projected area of light passing a distance $L$ through the vegetation. The relative area of light, or ``free-area coefficient'', is defined by the relation:
+The parameter, $\kappa$, resembles an absorption coefficient\footnote{Another way to express $\kappa$ using the relations in Eq.~(\ref{Eq:relations}) is $N A_{\mathrm{p}}/V_{\mathrm{c}}$, or in other words, the total projected area per unit volume. This parameter describes the absorption of non-scattering light by solid particles.} and can be determined by measuring the projected area of light, $A$, passing a given distance $x$ through the vegetation. The decrease in the projected area of light is governed by the equation:
+\begin{equation}
+   \frac{ \mathrm{d}A}{\mathrm{d} x} = -\kappa \, A  \quad ; \quad  A(x) = A(0) \, {\rm e}^{-\kappa x}
+\end{equation} 
+The relative fraction of light passing through a distance of $L$ is
 \begin{equation}\label{eq:WhiteFraction}
-W = {\rm e}^{-\kappa L}
+W = \frac{A(L)}{A(0)}
 \end{equation}
-In the experiments, the cross-section of a small wind tunnel is filled with various amounts and types of vegetation to determine the drag coefficient for the following simplified model:
+The parameter $W$ is sometimes referred to as the ``free-area coefficient'' or ``free-area fraction'' in the literature.
+
+In order to measure the drag coefficient, $C_{\mathrm{d}}$, a section of length, $L$, of a small wind tunnel is to be filled with various amounts and types of vegetation and the pressure drop, $\Delta P$, measured for an array of wind speeds, $U$. The value of $\kappa$ shall be determined via black and white photography, and the drag coefficient extracted from the following form of the drag law derived above:
 \begin{equation}\label{eq:Pressure}
-F \equiv \frac{\Delta P}{L}  = \frac{\rho}{2} \, C_{\rm d} \, \kappa \, U^2
+\frac{\Delta P}{L}  = \frac{\rho}{2} \, C_{\rm d} \, \kappa \, U^2
 \end{equation}
 \pagebreak
 
@@ -316,7 +325,7 @@ The plant samples were cut into 0.5~\si{m} by 0.5~\si{m} by 0.5~\si{m} cubes usi
 \subsection{Determining the Free-Area Coefficient via Photography}
 \label{ssec:Free-Area Coef. Photo}
 
-The free-area coefficient was determined by placing each vegetation sample on a table located between a large white backdrop and a 0.5~m by 0.5~m cardboard frame, the same dimensions as the tunnel cross section (Fig.~\ref{fig:ImgAnaly}). For each sample cut and position, the projected area was photographed. All images were captured using a Nikon D5600 camera placed on a tripod located approximately 3.6~\si{m} away from the sample. The white backdrop was illuminated using a collection of incandescent and LED lights.
+The free-area coefficient, $W$, was determined by placing each vegetation sample on a table located between a large white backdrop and a 0.5~m by 0.5~m cardboard frame, the same dimensions as the tunnel cross section (Fig.~\ref{fig:ImgAnaly}). For each sample cut and position, the projected area was photographed. All images were captured using a Nikon D5600 camera placed on a tripod located approximately 3.6~\si{m} away from the sample. The white backdrop was illuminated using a collection of incandescent and LED lights.
 
 \begin{figure} [!h]
 	\centering 	\includegraphics[width=1.0\linewidth]{Picture5.jpg}
