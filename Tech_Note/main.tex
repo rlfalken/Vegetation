@@ -338,23 +338,16 @@ The images were processed using MATLAB's Image Processing Toolbox. Imported colo
 The uncertainty of the free-area coefficient, $W$, is discussed in Appendix~\ref{ssec:FAACUncertainty}.
 
 \subsection{Description of the Wind Tunnel}
-\label{ssec:headingscap}
+\label{ssec:DescirptionofWind}
 
 Pressure loss measurements were obtained in a wind tunnel test section with a cross-sectional area of 0.5~\si{m} by 0.5~\si{m} and a length of 2~\si{m}. An image and schematic diagram of the wind tunnel setup is shown in Fig.~\ref{fig:WindtunnelPic}. The volume flow through the tunnel was measured upstream of the vegetation using a Rosemont~485 Annubar~\cite{Annubar}. The pressure drop across the vegetation was measured using an MKS Baratron Type 220D pressure transducer with a range of 0 to 133~Pa (1~torr). The air flow was provided by a 0.91~m axial fan controlled by a variable frequency drive and monitored using the Annubar. Air density was calculated from pressure, temperature, and relative humidity readings of the testing facility. Each sample configuration was subjected to nine different fan speeds ranging from 0 to 88~\% of the full-scale fan speed. The fan speed was not run at full scale due to the risk of exceeding the pressure transducer's pressure limitations. Data was sampled at 90~\si{Hz} for a 30~\si{s} period while maintaining a constant fan speed.
 
 \begin{figure} [!]
 	\centering 	
-    \includegraphics[width=\textwidth,keepaspectratio]{Picture6a.jpg}
+    \includegraphics[width=\textwidth,keepaspectratio]{Picture6a.png}
 	\caption[Wind tunnel experimental setup]{Wind tunnel experimental setup with top and front schematic drawings }
 	\label{fig:WindtunnelPic}
 \end{figure}
-
-%\begin{figure} [!]
-%	\centering 	
-%    \includegraphics[width=\textwidth,keepaspectratio]{Drawing1.pdf}
-%	\caption{Schematic diagram of the wind-tunnel experimental setup}
-%	\label{fig:WindtunnelSch}
-%\end{figure}
 
 Once a set of measurements was taken at all fan speeds, the wind tunnel was shut off for approximately 5~\si{min}, and then the measurements were repeated. All measurements were repeated three times for each vegetation configuration. The variance homogeneity of the replicate measurements was tested using Hartley's F\textsubscript{max} test. If it was found that the data sets were homogenous, then the measurements were averaged.
 
@@ -388,7 +381,7 @@ Figure~\ref{fig:betavkappa} presents the relationship between the averaged ``abs
 
 \begin{figure}[!h]
 	\centering 	
-    \includegraphics[width=1\linewidth]{Picture12.jpg}
+    \includegraphics[width=1\linewidth]{Picture12.pdf}
 	\caption[Comparison of ``absorption coefficient,'' $\kappa$, and solid fraction, $\beta$]{Calculated ``absorption coefficient'' ($\kappa$) of vegetation sample configuration plotted against the corresponding solid fractions ($\beta$)}
 	\label{fig:betavkappa}
 \end{figure}
@@ -430,14 +423,14 @@ Figure~\ref{fig:DPvU(Overall)} displays the relationship between the freestream 
 
 \begin{sidewaysfigure} [!]
 	\centering
-	\includegraphics[width=\textwidth,keepaspectratio]{Picture8.jpg}
+	\includegraphics[width=\textwidth,keepaspectratio]{Picture8.pdf}
 	\caption[Differential pressure measurements of vegetation samples]{Differential pressure measurements of vegetation samples subjected to a range of freestream velocities}
 	\label{fig:DPvU(Overall)}
 \end{sidewaysfigure}
 
 \begin{sidewaysfigure}[!]
 	\centering
-	\includegraphics[width=\textwidth,keepaspectratio]{Picture9.jpg}
+	\includegraphics[width=\textwidth,keepaspectratio]{Picture9.pdf}
 	\caption{Differential pressure measurements of vegetation samples over ($\kappa \, L$) vs. dynamic pressure}
 	\label{fig:DPoveraf(Overall)}
 \end{sidewaysfigure}
@@ -446,7 +439,7 @@ The distribution of the measured drag coefficients for all sample configurations
 
 \begin{figure}[!]
 	%\centering 	
-\includegraphics[width=\textwidth,keepaspectratio]{Picture11.jpg}
+\includegraphics[width=\textwidth,keepaspectratio]{Picture11.pdf}
 	\caption[Distribution of drag coefficients for all samples (top), samples with narrow leaves (bottom left), samples with broad leaves (bottom right)]{Distribution of vegetation samples drag coefficients with noted mean and standard deviation values}
 	\label{fig:Histogram}
 \end{figure}
@@ -526,7 +519,16 @@ Distylium			&	0.5	&	A	& 	3.2		&	0.4			&Red Holly			&	2.7	&	A	& 	3.1	&	0.5	\\
 
 In comparison to previous work~\cite{Cao2012,Jalonen2014,Mayhead1973,Gillies2002,Ishikawa2006}, the magnitude of the measured drag coefficients in this study is relatively large. As discussed in Section~\ref{sec:intro}, most previous studies have measured the wind resistance of a single plant or tree within a larger wind tunnel while this work considered a relatively homogenous distribution of vegetation within a tunnel. The interpretation of ``freestream'' velocity, shape factor, cross-sectional area, and so on, are often different in these studies, making it difficult to compare drag coefficients from one study to another. Within the field, there is no single definition of drag coefficient regarding vegetation.
 
-As a way to verify the accuracy of our wind tunnel measurements and the validity of our drag coefficient derivation, we considered a bank of regularly-spaced, staggered, vertical cylinders within our wind tunnel, using both actual steel rods and empirical results from Idelchik~\cite{Idelchik1994}. For each of the measured vegetation samples, a comparable configuration of vertical tubes was chosen such that the volume fraction, $\beta$, ``absorption coefficient,'' $\kappa$, and characteristic diameter, $D$, match as closely as possible (see Table~\ref{tab:tube_parameters}). The characteristic diameter was calculated from Eq.~\ref{eq:Kappa} using the measured $\beta$ and $\kappa$ values and assuming a cylindrical shape factor ($C_{\mathrm{s}} = 1/\pi$). To account for the repeated tube formation for each row the $\kappa$ value of the tube bank was determined from the distance between rows, $L'$, and Eq.~\ref{eq:WhiteFraction}. According to Idelchik, the expected pressure drop through the tube bank is:
+As a way to verify the accuracy of our wind tunnel measurements and the validity of our drag coefficient derivation, we considered a bank of regularly-spaced vertical cylinders within our wind tunnel, using both actual steel rods and empirical results from Idelchik~\cite{Idelchik1994}. The pressure loss across two rows of six in-line 2.5 cm stainless steel cylinders was measured using the same experimental setup described in Section~\ref{ssec:DescirptionofWind}. The "resistance coefficient" (termed by Idelchik) for tube banks was calculated from the measurements and the empirical model. Figure~\ref{RESCOEF} shows that the resistant coefficient based on the measurements is reasonably close to Idelchik's empirical model, verifying our experimental approach in this study. 
+
+\begin{figure}[!h]
+	\centering 	
+    \includegraphics[width=\textwidth,keepaspectratio]{Picture14.pdf}
+	\caption[Comparison between Resistance Coefficients of tube banks ]{Comparison between measured and calculated Resistance Coefficients of tube banks}
+	\label{fig:RESCOEF}
+\end{figure}
+
+Furthermore, for each of the measured vegetation samples, a comparable configuration of vertical tubes was chosen such that the volume fraction, $\beta$, ``absorption coefficient,'' $\kappa$, and characteristic diameter, $D$, match as closely as possible (see Table~\ref{tab:tube_parameters}). The characteristic diameter was calculated from Eq.~\ref{eq:Kappa} using the measured $\beta$ and $\kappa$ values and assuming a cylindrical shape factor ($C_{\mathrm{s}} = 1/\pi$). To account for the repeated tube formation for each row the $\kappa$ value of the tube bank was determined from the distance between rows, $L'$, and Eq.~\ref{eq:WhiteFraction}. According to Idelchik, the expected pressure drop through the tube bank is:
 \begin{equation}
 \label{eq:IdelchickTB}
 \Delta P = \frac{\rho}{2}\, \zeta  \left( \frac{U}{W} \right)^2  \quad ; \quad \zeta = A \, \mathrm{Re}^{-0.27} (N_\mathrm{r}+1) \quad ; \quad  \mathrm{Re} = \frac{(U/W) \, D \, \rho}{\mu_\mathrm{air}}
@@ -559,7 +561,7 @@ where $A$ is a geometric parameter determined from the tube bank configuration, 
 
 \begin{figure}[!]
 	\centering 	
-\includegraphics[width=\textwidth,keepaspectratio]{Picture13.jpg}
+\includegraphics[width=\textwidth,keepaspectratio]{Picture13.pdf}
 	\caption[Drag Coefficient comparison between vegetation samples and tube bank configurations]{Drag Coefficient comparison between vegetation sample configurations [Bakers Blue Spruce ($\beta$=1.8\%) and Gold Rider Leyland Cypress ($\beta$=1.4\%)] and their corresponding tube bank configuration with respect to velocity}
 	\label{fig:TBGR}
 \end{figure}
@@ -574,6 +576,7 @@ This report documents a series of experiments implemented to determine the absor
 \begin{enumerate}
   \item The calculated absorption coefficient for each sample demonstrated a strong relationship with its corresponding solid fraction.
   \item The overall average drag coefficient of the bulk vegetation was found to be 2.8 with an expanded uncertainty of 0.4. The differences between the average drag coefficients of different plant species as well as the leaf type groups were shown to be significant, while still falling in the overall mean's uncertainty bound, suggesting that the overall average drag coefficient could be used as a constant value in CFD models of various plant types.
+\item Compared to previous works, the overall drag coefficient reported in this work is higher than any value reported in past studies. The method of this work was verified using tube bank models which demonstrated a fairly close relationship between experimental and predicted results. 
 \end{enumerate}
 
 \section*{Acknowledgments}
